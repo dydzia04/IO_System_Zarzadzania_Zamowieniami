@@ -66,10 +66,9 @@ System ma na celu tworzyć zamówienia w bazie danych, pobierając dane z system
 
 //przerobić na tabelkę
 
- Baza danych - MariaDB znane jako MySQL
-
- Backend - Laravel / C# .Net Core
-
- Frontend templatki - Blade / Blazor
-
- Frontend framework - Vue.js / Angular
+| Element stacku | Technologia |
+|---|---|
+| Baza danych | MariaDB/MySQL |
+| Backend | Laravel/C# .Net Core |
+| Frontend template engine | Blade / Blazor |
+| Frontend framework | Vue.js/Angular |
