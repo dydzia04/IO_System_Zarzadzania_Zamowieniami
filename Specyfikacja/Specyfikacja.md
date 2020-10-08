@@ -64,8 +64,6 @@ System ma na celu tworzyć zamówienia w bazie danych, pobierając dane z system
 
 ## Stack
 
-//przerobić na tabelkę
-
 | Element stacku | Technologia |
 |---|---|
 | Baza danych | MariaDB/MySQL |
