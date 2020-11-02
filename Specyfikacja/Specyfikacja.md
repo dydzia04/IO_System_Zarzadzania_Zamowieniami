@@ -48,6 +48,30 @@ System ma na celu tworzyć zamówienia w bazie danych, pobierając dane z system
 
 ---
 
+## Opis encji
+
+### Order
+
+Relacja jeden do wielu w połączeniu z Order_Details.
+Jedno zamówienie może mieć wiele Order_Details w którym przechowujemy informacje odnośnie ilości danego produktu.
+
+### Product
+
+Relacja jeden do wielu w połączeniu z Order_Details.
+Jeden produkt może być w wielu Order_Details, czyli występować w wielu zamówieniach.
+
+### Customer
+
+Relacja jeden do wielu w połączeniu z Order.
+Jeden kontrahent może dokonać wielu zamówień.
+
+### Order_Status
+
+Relacja jeden do wielu w połączeniu z Order.
+Jeden status może występować w wielu zamówieniach.
+
+---
+
 ## Stack
 
 | Element stacku | Technologia |
