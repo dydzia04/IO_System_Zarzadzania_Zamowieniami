@@ -30,7 +30,6 @@ System ma na celu tworzyć zamówienia w bazie danych, pobierając dane z system
     - Waga
   - Czy opłacone
   - Status zamówienia
-  - Faktura/Paragon
   - Data złożenia
   - Data ostatniej modyfikacji
 
@@ -41,24 +40,13 @@ System ma na celu tworzyć zamówienia w bazie danych, pobierając dane z system
 ### Pracownik:
 
   - Podgląd danego zamówienia
-  - Modyfikacja statusu automatyczna przy wystawieniu faktury, wysyłce
   - Manualna modyfikacja statusu
   - Pobieranie danych kontrahentów
   - Pobieranie danych produktów
   - Wysłanie danych do faktur
   - Filtorwanie zamówień
   - Wyszukiwanie zamówień
-  - Rezerwacja produktów na czas trwania realizacji zamówienia
-
-### Klient:
-
-  - Podgląd danego zamówienia
-  - Składanie zamówienia
-  - Otrzymuje maila potwierdzającego zamówienie
-  - Otrzymuje aktualizacje statusu zamówienia
-  - Newsletter
-  - Otrzymywanie kodów rabatowych
-  - Informacja o promocji produktów
+  - Wprowadzanie zamówienia
 
 ---
 
