@@ -13,7 +13,7 @@ System ma na celu tworzyć zamówienia w bazie danych, pobierając dane z system
 
 ### Pola zamówień:
 
-  - GUID
+  - ID
   - Dane klienta
     - Nazwa klienta
     - Nazwa firmy
@@ -39,14 +39,12 @@ System ma na celu tworzyć zamówienia w bazie danych, pobierając dane z system
 
 ### Pracownik:
 
-  - Podgląd danego zamówienia
-  - Manualna modyfikacja statusu
-  - Pobieranie danych kontrahentów
-  - Pobieranie danych produktów
-  - Wysłanie danych do faktur
-  - Filtorwanie zamówień
-  - Wyszukiwanie zamówień
-  - Wprowadzanie zamówienia
+  - Podgląd danego zamówienia - System pobiera dane zamówienia z tabeli Order_Details w którym znajduje się lista produktów, dane kontrahenta i dodatkowe informacje o zamówieniu.
+  - Manualna modyfikacja zamówienia - System pozwala modyfikować listę produktów danego zamówienia. Przyjmujemy że, jeżeli klient będzie chciał stworzyć zamówienie na inne dane, to lista produktów musi zostać utworzona na nowo. 
+  - Modyfikacja statusu zamówienia - System ma pozwalać oznaczyć zamówienia które są niekompletne magazynowo i nie mogą być zrealizowane.
+  - Wyszukiwanie zamówień wraz z filtrowaniem wyników
+  - Wprowadzanie zamówienia - Ręczne wprowadzanie w systemie zamówień podając dane kontrahentów oraz listę produktów.
+  - Usuwanie zamówień
 
 ---
 
@@ -55,6 +53,6 @@ System ma na celu tworzyć zamówienia w bazie danych, pobierając dane z system
 | Element stacku | Technologia |
 |---|---|
 | Baza danych | MariaDB/MySQL |
-| Backend | Laravel/C# .Net Core |
-| Frontend template engine | Blade / Blazor |
+| Backend | Laravel |
+| Frontend template engine | Blade |
 | Frontend framework | Vue.js/Angular |
