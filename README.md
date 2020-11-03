@@ -75,6 +75,7 @@ System ma na celu automatyczne koordynowanie zamówień według odpowiednio przy
     | Tax         | Numeric(10,2) | Podatek                 |
     | Description | String        | Opis produktu           |
     | Service     | Boolean       | Czy produkt jest usługą |
+    | Category_ID | Integer       | Id kategorii produktu   |
 
 1. **Contractor**
 
