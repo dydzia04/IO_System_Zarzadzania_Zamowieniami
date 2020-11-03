@@ -6,7 +6,7 @@ Bury Karol, Dyndał Patryk, Długosz Piotr, Filar Kamil
 ## Spis treści
 1. [Opis](https://github.com/dydzia04/IO_System_Zarzadzania_Zamowieniami/blob/main/README.md#opis)
 1. [Funkcjonalności](https://github.com/dydzia04/IO_System_Zarzadzania_Zamowieniami/blob/main/README.md#funkcjonalności)
-1. [Diagram UML Klas](https://github.com/dydzia04/IO_System_Zarzadzania_Zamowieniami/blob/main/README.md#diagram-uml-klas)
+1. [Diagram UML](https://github.com/dydzia04/IO_System_Zarzadzania_Zamowieniami/blob/main/README.md#diagram-uml)
 1. [Diagram ERD](https://github.com/dydzia04/IO_System_Zarzadzania_Zamowieniami/blob/main/README.md#diagram-erd)
 1. [Opis Tabel](https://github.com/dydzia04/IO_System_Zarzadzania_Zamowieniami/blob/main/README.md#tabele)
 
@@ -28,7 +28,7 @@ System ma na celu automatyczne koordynowanie zamówień według odpowiednio przy
   
   - Usuwanie zamówień
 
-## Diagram UML Klas
+## Diagram UML
 
 <img src="./img/IO%20diagram%20UML%20klas%20-%20UML%20Class.svg">
 
@@ -55,7 +55,7 @@ System ma na celu automatyczne koordynowanie zamówień według odpowiednio przy
     | Status_ID     | Integer  | Aktualny status zamówienia ("Zamówiono","W trakcie","Zrealizowano") |
     | Created       | DataTime | Data utworzenia zamówienia                                          |
     | Last_Modified | DataTime | Data ostatniej modyfikacji zamówienia                               |
-    | Contractor_ID | Integer  | Unikalny identyfikator kontrahenta.                                 |
+    | Customer_ID   | Integer  | Unikalny identyfikator kontrahenta.                                 |
 
 1. **Order_Status**
 
@@ -82,31 +82,22 @@ System ma na celu automatyczne koordynowanie zamówień według odpowiednio przy
     | Tax         | Numeric(10,2) | Podatek                 |
     | Description | String        | Opis produktu           |
     | Service     | Boolean       | Czy produkt jest usługą |
-    | Category_ID | Integer       | Id kategorii produktu   |
 
-1. **Contractor**
+1. **Customer**
 
-    |  Kolumna  |      Typ      | Opis                                                        |
-    |:---------:|:-------------:|-------------------------------------------------------------|
-    | ID        | Integer       | Główne Id tabeli                                            |
-    | Name      | String        | Nazwa kontrahenta                                           |
-    | Join_Date | DataTime      | Data dołączenia                                             |
-    | Street    | String        | Ulica, numer budynku, numer mieszkania np. Wolnościowa 21/2 |
-    | City      | String        | Nazwa miejscowości                                          |
-    | Post_Code | String        | Kod pocztowy                                                |
-    | Country   | String        | Kraj                                                        |
-    | NIP       | Numeric(10,1) | Numer identyfikacji podatkowej                              |
-
-1. **Contact**
-
-    |    Kolumna    |   Typ   | Opis              |
-    |:-------------:|:-------:|-------------------|
-    | ID            | Integer | Główne Id tabeli  |
-    | Contractor_ID | Integer | Id kontrahenta    |
-    | Name          | String  | Imię              |
-    | Last_Name     | String  | Nazwisko          |
-    | Email         | String  | E-mail            |
-    | Phone         | String  | Telefon           |
+    |  Kolumna      |      Typ      | Opis                                                        |
+    |:-------------:|:-------------:|-------------------------------------------------------------|
+    | ID            | Integer       | Główne Id tabeli                                            |
+    | NIP           | Numeric(10,1) | Numer identyfikacji podatkowej                              |
+    | Name          | String        | Nazwa                                                       |
+    | Created       | DataTime      | Data dołączenia                                             |
+    | Last_Modified | DataTime      | Data modyfikacji                                            |
+    | Street        | String        | Ulica, numer budynku, numer mieszkania np. Wolnościowa 21/2 |
+    | City          | String        | Nazwa miejscowości                                          |
+    | Post_Code     | String        | Kod pocztowy                                                |
+    | Country       | String        | Kraj                                                        |
+    | Email         | String        | E-mail                                                      |
+    | Phone         | String        | Telefon                                                     |
 
 ---
 
