@@ -7,7 +7,7 @@
 
 ## Krótki opis
 
-System ma na celu tworzyć zamówienia w bazie danych, pobierając dane z systemu kontrahentów oraz systemu zarządzania produktami. Po wprowadzeniu nowego zamówienia wysyłana jest także informacja o nim do systemu fakturowania.
+System ma na celu automatyczne koordynowanie zamówień według odpowiednio przygotowanych procesów biznesowych. System będzie przystosowany pod obsługę przez pracownika, który będzie mógł manualnie obsługiwać dane zamówienie (edytować je), modyfikować status zamówienia w razie zaistnienia takiej potrzeby oraz wprowadzać/usuwać dane zamówienia. W obsłudze tego systemu pomoże mu intuicyjna wyszukiwarka z filtrowaniem wyników.
 
 ---
 
