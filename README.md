@@ -31,7 +31,11 @@ System ma na celu automatyczne koordynowanie zamówień według odpowiednio przy
 
 <img src="./img/IO%20diagram%20UML%20klas%20-%20ERD.svg">
 
+--- 
 
+<img src="./img/IO%20diagram%20UML%20klas%20-%20ERD2.svg">
+
+---
 
 ## Tabele
 
