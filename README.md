@@ -3,13 +3,9 @@
 ## Autorzy
 Bury Karol, Dyndał Patryk, Długosz Piotr, Filar Kamil
 
----
-
 ## Opis
 
 System ma na celu automatyczne koordynowanie zamówień według odpowiednio przygotowanych procesów biznesowych. System będzie przystosowany pod obsługę przez pracownika, który będzie mógł manualnie obsługiwać dane zamówienie (edytować je), modyfikować status zamówienia w razie zaistnienia takiej potrzeby oraz wprowadzać/usuwać dane zamówienia. W obsłudze tego systemu pomoże mu intuicyjna wyszukiwarka z filtrowaniem wyników.
-
----
 
 ## Funkcjonalności
 
@@ -25,20 +21,17 @@ System ma na celu automatyczne koordynowanie zamówień według odpowiednio przy
   
   - Usuwanie zamówień
 
----
-
-
 ## Diagram UML Klas
 
 <img src="./img/IO%20diagram%20UML%20klas%20-%20UML%20Class.svg">
 
----
+
 
 ## ERD 
 
 <img src="./img/IO%20diagram%20UML%20klas%20-%20ERD.svg">
 
----
+
 
 ## Tabele
 
