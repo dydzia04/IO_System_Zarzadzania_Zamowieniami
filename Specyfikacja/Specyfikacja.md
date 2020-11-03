@@ -35,64 +35,64 @@ System ma na celu automatyczne koordynowanie zamówień według odpowiednio przy
 
 1. **Order**
 
-|    Kolumna    |    Typ   | Opis                                                                |
-|:-------------:|:--------:|---------------------------------------------------------------------|
-| ID            | Integer  | Główne Id tabeli                                                    |
-| Order_ID      | String   | Numer Zamówienia                                                    |
-| Status_ID     | Integer  | Aktualny status zamówienia ("Zamówiono","W trakcie","Zrealizowano") |
-| Created       | DataTime | Data utworzenia zamówienia                                          |
-| Last_Modified | DataTime | Data ostatniej modyfikacji zamówienia                               |
-| Contractor_ID | Integer  | Unikalny identyfikator kontrahenta.                                 |
+    |    Kolumna    |    Typ   | Opis                                                                |
+    |:-------------:|:--------:|---------------------------------------------------------------------|
+    | ID            | Integer  | Główne Id tabeli                                                    |
+    | Order_ID      | String   | Numer Zamówienia                                                    |
+    | Status_ID     | Integer  | Aktualny status zamówienia ("Zamówiono","W trakcie","Zrealizowano") |
+    | Created       | DataTime | Data utworzenia zamówienia                                          |
+    | Last_Modified | DataTime | Data ostatniej modyfikacji zamówienia                               |
+    | Contractor_ID | Integer  | Unikalny identyfikator kontrahenta.                                 |
 
 1. **Order_Status**
 
-|    Kolumna    |    Typ   | Opis                                                                |
-|:-------------:|:--------:|---------------------------------------------------------------------|
-| ID            | Integer  | Główne Id tabeli                                                    |
-| Name          | String   | Nazwa aktualnego stanu zamówienia                                         |
+    |    Kolumna    |    Typ   | Opis                                                                |
+    |:-------------:|:--------:|---------------------------------------------------------------------|
+    | ID            | Integer  | Główne Id tabeli                                                    |
+    | Name          | String   | Nazwa aktualnego stanu zamówienia                                   |
 
 1. **Order_Details**
 
-|    Kolumna    |    Typ   | Opis                                  |
-|:-------------:|:--------:|---------------------------------------|
-| Order_ID      | Integer  | Id zamówienia                         |
-| Product_ID    | Integer  | Id produktu                           |
-| Quantity      | Integer  | Ilość danego produktu                 |
+    |    Kolumna    |    Typ   | Opis                                  |
+    |:-------------:|:--------:|---------------------------------------|
+    | Order_ID      | Integer  | Id zamówienia                         |
+    | Product_ID    | Integer  | Id produktu                           |
+    | Quantity      | Integer  | Ilość danego produktu                 |
 
 1. **Product**
 
-|   Kolumna   |      Typ      | Opis                    |
-|:-----------:|:-------------:|-------------------------|
-| ID          | Integer       | Id zamówienia           |
-| Name        | String        | Nazwa produktu          |
-| Price       | Numeric(10,2) | Cena netto              |
-| Tax         | Numeric(10,2) | Podatek                 |
-| Description | String        | Opis produktu           |
-| Service     | Boolean       | Czy produkt jest usługą |
+    |   Kolumna   |      Typ      | Opis                    |
+    |:-----------:|:-------------:|-------------------------|
+    | ID          | Integer       | Id zamówienia           |
+    | Name        | String        | Nazwa produktu          |
+    | Price       | Numeric(10,2) | Cena netto              |
+    | Tax         | Numeric(10,2) | Podatek                 |
+    | Description | String        | Opis produktu           |
+    | Service     | Boolean       | Czy produkt jest usługą |
 
 1. **Contractor**
 
-|  Kolumna  |      Typ      | Opis                                                        |
-|:---------:|:-------------:|-------------------------------------------------------------|
-| ID        | Integer       | Główne Id tabeli                                            |
-| Name      | String        | Nazwa kontrahenta                                           |
-| Join_Date | DataTime      | Data dołączenia                                             |
-| Street    | String        | Ulica, numer budynku, numer mieszkania np. Wolnościowa 21/2 |
-| City      | String        | Nazwa miejscowości                                          |
-| Post_Code | String        | Kod pocztowy                                                |
-| Country   | String        | Kraj                                                        |
-| NIP       | Numeric(10,1) | Numer identyfikacji podatkowej                              |
+    |  Kolumna  |      Typ      | Opis                                                        |
+    |:---------:|:-------------:|-------------------------------------------------------------|
+    | ID        | Integer       | Główne Id tabeli                                            |
+    | Name      | String        | Nazwa kontrahenta                                           |
+    | Join_Date | DataTime      | Data dołączenia                                             |
+    | Street    | String        | Ulica, numer budynku, numer mieszkania np. Wolnościowa 21/2 |
+    | City      | String        | Nazwa miejscowości                                          |
+    | Post_Code | String        | Kod pocztowy                                                |
+    | Country   | String        | Kraj                                                        |
+    | NIP       | Numeric(10,1) | Numer identyfikacji podatkowej                              |
 
 1. **Contact**
 
-|    Kolumna    |   Typ   | Opis              |
-|:-------------:|:-------:|-------------------|
-| ID            | Integer | Główne Id tabeli  |
-| Contractor_ID | Integer | Id kontrahenta    |
-| Name          | String  | Imię              |
-| Last_Name     | String  | Nazwisko          |
-| Email         | String  | E-mail            |
-| Phone         | String  | Telefon           |
+    |    Kolumna    |   Typ   | Opis              |
+    |:-------------:|:-------:|-------------------|
+    | ID            | Integer | Główne Id tabeli  |
+    | Contractor_ID | Integer | Id kontrahenta    |
+    | Name          | String  | Imię              |
+    | Last_Name     | String  | Nazwisko          |
+    | Email         | String  | E-mail            |
+    | Phone         | String  | Telefon           |
 
 ---
 
