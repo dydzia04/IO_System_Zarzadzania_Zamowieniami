@@ -88,7 +88,7 @@ System ma na celu automatyczne koordynowanie zamówień według odpowiednio przy
     |  Kolumna      |      Typ      | Opis                                                        |
     |:-------------:|:-------------:|-------------------------------------------------------------|
     | ID            | Integer       | Główne Id tabeli                                            |
-    | NIP           | Numeric(10,1) | Numer identyfikacji podatkowej                              |
+    | NIP           | Numeric(10,0) | Numer identyfikacji podatkowej                              |
     | Name          | String        | Nazwa                                                       |
     | Created       | DataTime      | Data dołączenia                                             |
     | Last_Modified | DataTime      | Data modyfikacji                                            |
