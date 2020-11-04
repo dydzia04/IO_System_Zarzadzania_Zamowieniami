@@ -33,14 +33,9 @@ System ma na celu automatyczne koordynowanie zamówień według odpowiednio przy
 <img src="./img/IO%20diagram%20UML%20klas%20-%20UML%20Class.svg">
 
 
-
 ## Diagram ERD 
 
 <img src="./img/IO%20diagram%20UML%20klas%20-%20ERD.svg">
-
---- 
-
-<img src="./img/IO%20diagram%20UML%20klas%20-%20ERD2.svg">
 
 ---
 
@@ -51,18 +46,18 @@ System ma na celu automatyczne koordynowanie zamówień według odpowiednio przy
     |    Kolumna    |    Typ   | Opis                                                                |
     |:-------------:|:--------:|---------------------------------------------------------------------|
     | ID            | Integer  | Główne Id tabeli                                                    |
-    | Order_ID      | String   | Numer Zamówienia                                                    |
-    | Status_ID     | Integer  | Aktualny status zamówienia ("Zamówiono","W trakcie","Zrealizowano") |
+    | Order_Name    | String   | Numer Zamówienia ("ZM/2020/11/4/NR/1")                              |
+    | Status_ID     | Integer  | Identyfikator statusu                                               |
+    | Customer_ID   | Integer  | Identyfikator klienta                                               |
     | Created       | DataTime | Data utworzenia zamówienia                                          |
     | Last_Modified | DataTime | Data ostatniej modyfikacji zamówienia                               |
-    | Customer_ID   | Integer  | Unikalny identyfikator kontrahenta.                                 |
 
 1. **Order_Status**
 
-    |    Kolumna    |    Typ   | Opis                                                                |
-    |:-------------:|:--------:|---------------------------------------------------------------------|
-    | ID            | Integer  | Główne Id tabeli                                                    |
-    | Name          | String   | Nazwa aktualnego stanu zamówienia                                   |
+    |    Kolumna    |    Typ   | Opis                                                                        |
+    |:-------------:|:--------:|-----------------------------------------------------------------------------|
+    | ID            | Integer  | Główne Id tabeli                                                            |
+    | Name          | String   | Nazwa aktualnego stanu zamówienia ("Zamówiono","W trakcie","Zrealizowano")  |
 
 1. **Order_Details**
 
@@ -79,7 +74,6 @@ System ma na celu automatyczne koordynowanie zamówień według odpowiednio przy
     | ID          | Integer       | Id zamówienia           |
     | Name        | String        | Nazwa produktu          |
     | Price       | Numeric(10,2) | Cena netto              |
-    | Tax         | Numeric(10,2) | Podatek                 |
     | Description | String        | Opis produktu           |
     | Service     | Boolean       | Czy produkt jest usługą |
 
@@ -88,16 +82,13 @@ System ma na celu automatyczne koordynowanie zamówień według odpowiednio przy
     |  Kolumna      |      Typ      | Opis                                                        |
     |:-------------:|:-------------:|-------------------------------------------------------------|
     | ID            | Integer       | Główne Id tabeli                                            |
-    | NIP           | Numeric(10,0) | Numer identyfikacji podatkowej                              |
-    | Name          | String        | Nazwa                                                       |
-    | Created       | DataTime      | Data dołączenia                                             |
-    | Last_Modified | DataTime      | Data modyfikacji                                            |
-    | Street        | String        | Ulica, numer budynku, numer mieszkania np. Wolnościowa 21/2 |
-    | City          | String        | Nazwa miejscowości                                          |
-    | Post_Code     | String        | Kod pocztowy                                                |
-    | Country       | String        | Kraj                                                        |
+    | NIP           | String        | Numer identyfikacji podatkowej                              |
+    | Name          | String        | Imię                                                        |
+    | Surname       | String        | Nazwisko                                                    |
     | Email         | String        | E-mail                                                      |
     | Phone         | String        | Telefon                                                     |
+    | Address       | String        | Adres klienta                                               |
+    | Created       | DataTime      | Data dołączenia                                             |
 
 ---
 
