@@ -9,6 +9,7 @@ Bury Karol, Dyndał Patryk, Długosz Piotr, Filar Kamil
 1. [Diagram UML](https://github.com/dydzia04/IO_System_Zarzadzania_Zamowieniami/blob/main/README.md#diagram-uml)
 1. [Diagram ERD](https://github.com/dydzia04/IO_System_Zarzadzania_Zamowieniami/blob/main/README.md#diagram-erd)
 1. [Opis Tabel](https://github.com/dydzia04/IO_System_Zarzadzania_Zamowieniami/blob/main/README.md#tabele)
+1. [Algorytmy](https://github.com/dydzia04/IO_System_Zarzadzania_Zamowieniami#algorytmy)
 
 ## Opis
 
