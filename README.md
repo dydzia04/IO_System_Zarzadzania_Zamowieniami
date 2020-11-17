@@ -21,7 +21,7 @@ System ma na celu automatyczne koordynowanie zamówień według odpowiednio przy
   
   - Manualna modyfikacja zamówienia - System pozwala modyfikować listę produktów danego zamówienia. Przyjmujemy że, jeżeli klient będzie chciał stworzyć zamówienie na inne dane, to lista produktów musi zostać utworzona na nowo. 
   
-  - Modyfikacja statusu zamówienia - System ma pozwalać oznaczyć zamówienia które są niekompletne magazynowo i nie mogą być zrealizowane.
+  - Modyfikacja statusu zamówienia - Zmiana statusu zamówienia na ("Zamówiono","W trakcie","Zrealizowano").
   
   - Wyszukiwanie zamówień wraz z filtrowaniem wyników
   
