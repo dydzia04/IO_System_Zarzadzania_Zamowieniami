@@ -23,7 +23,7 @@ class Customers extends Migration
             $table->string('phone');
             $table->string('address');
             
-            $table->timestamp();
+            $table->timestamps();
         });
     }
 
@@ -34,6 +34,6 @@ class Customers extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('customer');
+        Schema::dropIfExists('customers');
     }
 }

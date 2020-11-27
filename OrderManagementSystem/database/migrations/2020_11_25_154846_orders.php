@@ -19,9 +19,9 @@ class Orders extends Migration
             $table->string('order_name');
             $table->unsignedBigInteger('status_id');
             $table->unsignedBigInteger('customer_id');
-            $table->timestamp();
+            $table->timestamps();
 
-            $table->foreign('status_id')->references('id')->on('order_statuss');
+            $table->foreign('status_id')->references('id')->on('order_status');
             $table->foreign('customer_id')->references('id')->on('customers');
         });
     }
@@ -33,6 +33,6 @@ class Orders extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('order');
+        Schema::dropIfExists('orders');
     }
 }
