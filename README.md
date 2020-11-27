@@ -67,6 +67,8 @@ System ma na celu automatyczne koordynowanie zamówień według odpowiednio przy
     | Order_ID      | Integer  | Id zamówienia                         |
     | Product_ID    | Integer  | Id produktu                           |
     | Quantity      | Integer  | Ilość danego produktu                 |
+    
+    **Komentarz: ** Dodamy pole "Final_Price" zliczające zniżki z Product.Discount które to pole będzie ogólną zniżką na produkt oraz tabeli Discount_Group definiującej zniżkę ogólną dla Konthrahenta na wybrane produkty.
 
 1. **Product**
 
@@ -78,6 +80,8 @@ System ma na celu automatyczne koordynowanie zamówień według odpowiednio przy
     | Description | String        | Opis produktu           |
     | Service     | Boolean       | Czy produkt jest usługą |
 
+    **Komentarz: ** Dodanie pola "Discount" - ogólnej zniżki na produkt ustalanej odgórnie.
+    
 1. **Customer**
 
     |  Kolumna        |      Typ      | Opis                                                        |
@@ -91,6 +95,8 @@ System ma na celu automatyczne koordynowanie zamówień według odpowiednio przy
     | Phone           | String        | Telefon                                                     |
     | Address         | String        | Adres klienta                                               |
     | Created         | DataTime      | Data dołączenia                                             |
+
+    **Komentarz: ** Dodanie pola Discount_Group_ID będącej referencą do tabelii Discount_Group definijącą zniżki na dane produkty dla danego klienta w formacie liczbowym(stała wartość np. -15zł) oraz procentowej (np. -10%).
 
 ---
 
