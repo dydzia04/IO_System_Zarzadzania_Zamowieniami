@@ -26,8 +26,7 @@ Route::resource('/xd',TestController::class);
 
 Route::get('/orders', [OrderController::class,'getAllOrders']); 
 Route::get('/orders/{id}', [OrderController::class,'getOrder']); 
-Route::put('/orders/{id}', [OrderController::class,'patchOrder']); 
+Route::put('/orders/{id}', [OrderController::class,'updateOrder']); 
 Route::get('/orders/customer/{nip}', [OrderController::class,'getForCustomer']);
 Route::post('/orders', [OrderController::class, 'createOrder']);
-Route::post('/orders/{id}', [OrderController::class, 'updateProductList']);
 Route::delete('/orders/{id}', [OrderController::class, 'removeOrder']);
