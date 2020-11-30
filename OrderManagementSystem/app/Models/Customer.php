@@ -25,6 +25,7 @@ class Customer extends Model
         'email',
         'phone',
         'address',
+        'discount'
     ];
 
     protected function serializeDate(DateTimeInterface $date)
