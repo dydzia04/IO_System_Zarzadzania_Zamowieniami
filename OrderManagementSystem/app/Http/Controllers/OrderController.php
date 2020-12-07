@@ -48,48 +48,48 @@ class OrderController extends Controller
     {
         // DB::beginTransaction();
         // try {
-            $order = Order::firstWhere('id', $id);
+        $order = Order::firstWhere('id', $id);
 
-            if ($order === null)
-                return response()->json(['errors' => ['title' => 'Invalid order id', 'detail' => 'Order identified by id: "' . $id . '}" doesn\'t exist in database.']], 422);
+        if ($order === null)
+            return response()->json(['errors' => ['title' => 'Invalid order id', 'detail' => 'Order identified by id: "' . $id . '}" doesn\'t exist in database.']], 422);
 
-            $productRequired = $request->validate(
-                [
-                    'products' => 'required|array',
-                    'products.*.product_id' => 'required|integer',
-                    'products.*.quantity' => 'required|numeric|min:1',
-                ]
-            );
+        $productRequired = $request->validate(
+            [
+                'products' => 'required|array',
+                'products.*.product_id' => 'required|integer',
+                'products.*.quantity' => 'required|numeric|min:1',
+            ]
+        );
 
-            //removing all products associated with order
-            $order->products()->detach();
+        //removing all products associated with order
+        $order->products()->detach();
 
-            foreach ($request['products'] as $product) {
+        foreach ($request['products'] as $product) {
 
-                $productDB = Product::where('product_id', $product['product_id'])->first();
+            $productDB = Product::where('product_id', $product['product_id'])->first();
 
-                // create product if does not exists
-                // we don't need to give additional information about product if he exists in database
-                if ($productDB === null) {
-                    $productDB = new Product();
+            // create product if does not exists
+            // we don't need to give additional information about product if he exists in database
+            if ($productDB === null) {
+                $productDB = new Product();
 
-                    $validator = Validator::make($product, [
-                        'product_id' => 'required|integer',
-                        'name' => 'required|string',
-                        'price' => 'required|numeric|between:0,99999999.99',
-                        'description' => 'required|string',
-                        'isService' => 'required|boolean'
-                    ]);
+                $validator = Validator::make($product, [
+                    'product_id' => 'required|integer',
+                    'name' => 'required|string',
+                    'price' => 'required|numeric|between:0,99999999.99',
+                    'description' => 'required|string',
+                    'isService' => 'required|boolean'
+                ]);
 
-                    $productDB = $productDB->create($validator->validate());
-                }
-
-                $order->products()->attach($productDB->id, ['quantity' => $product['quantity']]);
+                $productDB = $productDB->create($validator->validate());
             }
 
-            $order->save();
-            
-            return response()->json(['updated' => $order->load(['products'])], 200);
+            $order->products()->attach($productDB->id, ['quantity' => $product['quantity']]);
+        }
+
+        $order->save();
+
+        return response()->json(['updated' => $order->load(['products'])], 200);
 
         // } catch (ValidationException $e) {
         //     DB::rollback();

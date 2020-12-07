@@ -21,12 +21,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::resource('/xd',TestController::class);
+Route::resource('/xd', TestController::class);
 
 
-Route::get('/orders', [OrderController::class,'getAllOrders']); 
-Route::get('/orders/{id}', [OrderController::class,'getOrder']); 
-Route::put('/orders/{id}', [OrderController::class,'updateOrder']); 
-Route::get('/orders/customer/{nip}', [OrderController::class,'getForCustomer']);
+Route::get('/orders', [OrderController::class, 'getAllOrders']);
+Route::get('/orders/{id}', [OrderController::class, 'getOrder']);
+Route::put('/orders/{id}', [OrderController::class, 'updateOrder']);
+Route::get('/orders/customer/{nip}', [OrderController::class, 'getForCustomer']);
 Route::post('/orders', [OrderController::class, 'createOrder']);
 Route::delete('/orders/{id}', [OrderController::class, 'removeOrder']);
