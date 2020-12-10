@@ -27,7 +27,7 @@ class OrderController extends Controller
 
     public function getAllOrders()
     {
-        $orders = Order::all();
+        $orders = Order::with("customer:NIP,id")->get();
 
         return response()->json($orders, 200);
     }
