@@ -1,5 +1,9 @@
 <div class="order-search">
-  <input type="text" [formControl]="searchString">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-9"><input type="text" [formControl]="searchString" class="searchInput"></div>
+    </div>
+  </div>
 </div>
 
 <div class="order-list">
@@ -16,7 +20,7 @@
     <p></p>
     <p></p>
   </div>
-  <div *ngFor="let order of orderList; let i = index" class="order-list-item">
+  <div *ngFor="let order of orderList; let i = index" class="order-list-item" routerLink="/order-details/{{order.id}}">
     <p>
       {{i+1}}
     </p>
@@ -26,7 +30,6 @@
     <p>
       {{order.customer.NIP}}
     </p>
-<!--  TODO: Dodać ikony  -->
 <!--  TODO: Podpiąć linki do routów  -->
     <p class="order-list-item-edit">
       <fa-icon routerLink="/" [icon]="faPencilRuler" class="Order_List_Icon"></fa-icon>
@@ -36,3 +39,5 @@
     </p>
   </div>
 </div>
+
+<br /><br />
