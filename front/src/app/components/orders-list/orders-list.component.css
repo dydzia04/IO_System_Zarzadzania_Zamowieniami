@@ -6,17 +6,22 @@
 }
 
 .order-search{
-  display: grid;
-  grid-template-columns: 9fr 1fr;
-  grid-gap: 1em;
-  margin: 1% auto 1% auto;
-  border: 2px solid rgb(22, 110, 0);
-  text-align: center;
-  width: 70%;
+   width: 100%; 
+  margin: 1em auto 1em auto;
   height: 2em;
-  font-size: 1.3em;
-  padding-left: 0.5em;
+  text-align: center;
+  padding-bottom: 1.5em;
+  padding-top: 1.5em;
 }
+.searchInput{
+  width: 60%;
+ height: 2em;
+  border: 2px solid rgb(22, 110, 0);
+  font-size: 1.3em;
+  text-indent: 0.5em;
+  background: white;
+}
+
 
 .order-list-header,
 .order-list-item{
