@@ -5,22 +5,22 @@ export default interface ICustomer {
   nip: string;
   departaments?: [
     {
-      id: number,
-      contractor_id: number,
-      name: string,
-      street: '35176 Nicklaus Shore Apt. 296, 33797',
-      city: 'North Maud',
-      postal_code: '32830',
-      country: 'Saint Martin',
-      is_main: 1,
+      id: number;
+      contractor_id: number;
+      name: string;
+      street: string;
+      city: string;
+      postal_code: string;
+      country: string;
+      is_main: number;
       contacts: [
         {
-          id: 6,
-          departament_id: 6,
-          name: 'Della Feil V',
-          last_name: 'Medhurst',
-          email: 'sammie02@hotmail.com',
-          phone: '243605272'
+          id: number;
+          departament_id: number;
+          name: string;
+          last_name: string;
+          email: string;
+          phone: string;
         }
       ]
     }
