@@ -21,7 +21,7 @@ class OrderController extends Controller
     {
         $order = Order::findOrFail($id);
 
-        $order = $order->load(['customer', 'products']);
+        $order = $order->load(['customer', 'products', 'status']);
 
         return response()->json($order, 200);
     }
@@ -84,8 +84,9 @@ class OrderController extends Controller
 
                 $productDB = $productDB->create($validator->validate());
             }
+            $orderDetails = ['quantity' => $product['quantity'], 'discountedPrice' => isset($product['discountedPrice']) ? $product['discountedPrice'] : null];
 
-            $order->products()->attach($productDB->id, ['quantity' => $product['quantity']]);
+            $order->products()->attach($productDB->id, $orderDetails);
         }
 
         $order->save();
@@ -174,8 +175,9 @@ class OrderController extends Controller
 
                     $productDB = $productDB->create($validator->validate());
                 }
+                $orderDetails = ['quantity' => $product['quantity'], 'discountedPrice' => isset($product['discountedPrice']) ? $product['discountedPrice'] : null];
 
-                $order->products()->attach($productDB->id, ['quantity' => $product['quantity']]);
+                $order->products()->attach($productDB->id, $orderDetails);
             }
 
             DB::commit();
