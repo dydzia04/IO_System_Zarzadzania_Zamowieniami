@@ -13,6 +13,7 @@ export class ApiService {
   private exampleListOfProducts: Array<Array<IProduct>>;
   private exampleOrder: IOrder;
   private exampleListOfCustomers: Array<ICustomer>;
+  private exampleCustomer: ICustomer;
 
   constructor(
     private filterService: FilterService,
@@ -252,6 +253,34 @@ export class ApiService {
         nip: '8538461611'
       }
     ];
+    this.exampleCustomer = {
+      id: 6,
+      name: 'Marquardt, Mueller and Mosciski',
+      join_date: '1978-10-29T21:04:55.000000Z',
+      nip: '4882099562',
+      departaments: [
+        {
+          id: 6,
+          contractor_id: 6,
+          name: 'Crist LLC',
+          street: '35176 Nicklaus Shore Apt. 296, 33797',
+          city: 'North Maud',
+          postal_code: '32830',
+          country: 'Saint Martin',
+          is_main: 1,
+          contacts: [
+            {
+              id: 6,
+              departament_id: 6,
+              name: 'Della Feil V',
+              last_name: 'Medhurst',
+              email: 'sammie02@hotmail.com',
+              phone: '243605272'
+            }
+          ]
+        }
+      ]
+    };
   }
 
 
@@ -275,7 +304,7 @@ export class ApiService {
   getOrdersFromAPI(): void {
     const url = '';
     this.http.get<Array<IOrder>>(url)
-      .subscribe( list => {
+      .subscribe(list => {
         this.setFilterableListOfOrders(list);
       });
   }
@@ -283,7 +312,7 @@ export class ApiService {
   getProductsFromAPI(): void {
     const url = '';
     this.http.get<Array<IProduct>>(url)
-      .subscribe( list => {
+      .subscribe(list => {
         this.setFilterableListOfProducts(list);
       });
   }
@@ -291,7 +320,7 @@ export class ApiService {
   getCustomersFromAPI(): void {
     const url = '';
     this.http.get<Array<ICustomer>>(url)
-      .subscribe( list => {
+      .subscribe(list => {
         this.setFilterableListOfCustomers(list);
       });
   }

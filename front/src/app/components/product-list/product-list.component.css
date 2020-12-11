@@ -1,0 +1,24 @@
+.product-search,
+.product-list{
+  width: 70%;
+  margin: auto;
+}
+
+.product-search{
+  display: grid;
+  grid-template-columns: 9fr 1fr;
+  grid-gap: 1em;
+}
+
+.product-list-header,
+.product-list-item{
+  display: grid;
+  grid-template-columns: 1fr 5fr 5fr 1fr 1fr;
+}
+
+.product-list-item-delete,
+.product-list-item-edit{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

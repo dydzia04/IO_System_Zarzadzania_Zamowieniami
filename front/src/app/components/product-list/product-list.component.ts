@@ -1,15 +1,38 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import IProduct from '../../interface/IProduct';
+import {Observable, Subscription} from 'rxjs';
+import {FormControl} from '@angular/forms';
+import {ApiService} from '../../services/api.service';
+import {FilterService} from '../../services/filter.service';
 
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.css']
 })
-export class ProductListComponent implements OnInit {
+export class ProductListComponent implements OnInit, OnDestroy {
+  productList$: Subscription;
+  productList: Array<IProduct>;
+  searchString: FormControl;
 
-  constructor() { }
+  constructor(
+    private api: ApiService,
+    private filter: FilterService,
+  ) {
+    this.productList$ = new Subscription();
+    this.productList = new Array<IProduct>();
+    this.searchString = new FormControl('');
+  }
 
   ngOnInit(): void {
+    this.api.setFilterableListOfProducts();
+    this.productList$ = this.filter.listOfProducts.subscribe( (data: Array<IProduct>) => {
+      this.productList = data;
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.productList$.unsubscribe();
   }
 
 }

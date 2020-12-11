@@ -1,1 +1,36 @@
-<p>product-list works!</p>
+<div class="product-search">
+  <input type="text" [formControl]="searchString">
+</div>
+
+<div class="product-list">
+  <div class="product-list-header">
+    <p>
+      Lp.
+    </p>
+    <p>
+      Nazwa produktu
+    </p>
+    <p>
+      Cena netto
+    </p>
+    <p></p>
+    <p></p>
+  </div>
+  <div *ngFor="let product of productList; let i = index" class="product-list-item">
+    <p>
+      {{i+1}}
+    </p>
+    <p>
+      {{product.nazwa_produktu}}
+    </p>
+    <p>
+      {{product.cena_netto}}
+    </p>
+    <p>
+      Ikona koszyka
+    </p>
+    <p routerLink="/product-details/{{product.id}}">
+      Szczegóły
+    </p>
+  </div>
+</div>

@@ -16,8 +16,8 @@ export class OrdersListComponent implements OnInit, OnDestroy {
   searchString: FormControl;
 
   constructor(
-    private apiService: ApiService,
-    private filterService: FilterService,
+    private api: ApiService,
+    private filter: FilterService,
   ) {
     this.orderList$ = new Subscription();
     this.orderList = [];
@@ -25,8 +25,8 @@ export class OrdersListComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.apiService.setFilterableListOfOrders();
-    this.orderList$ = this.filterService.listOfOrders.subscribe( (data: Array<IOrder>) => {
+    this.api.setFilterableListOfOrders();
+    this.orderList$ = this.filter.listOfOrders.subscribe( (data: Array<IOrder>) => {
       this.orderList = data;
     });
   }
