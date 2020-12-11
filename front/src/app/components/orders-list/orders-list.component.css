@@ -1,0 +1,24 @@
+.order-search,
+.order-list{
+  width: 70%;
+  margin: auto;
+}
+
+.order-search{
+  display: grid;
+  grid-template-columns: 9fr 1fr;
+  grid-gap: 1em;
+}
+
+.order-list-header,
+.order-list-item{
+  display: grid;
+  grid-template-columns: 1fr 5fr 5fr 1fr 1fr;
+}
+
+.order-list-item-delete,
+.order-list-item-edit{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

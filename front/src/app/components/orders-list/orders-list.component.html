@@ -1,0 +1,38 @@
+<div class="order-search">
+  <input type="text" [formControl]="searchString">
+</div>
+
+<div class="order-list">
+  <div class="order-list-header">
+    <p>
+      Lp.
+    </p>
+    <p>
+      Nazwa zamówienia
+    </p>
+    <p>
+      NIP Kontrahenta
+    </p>
+    <p></p>
+    <p></p>
+  </div>
+  <div *ngFor="let order of orderList; let i = index" class="order-list-item">
+    <p>
+      {{i+1}}
+    </p>
+    <p>
+      {{order.order_name}}
+    </p>
+    <p>
+      {{order.customer.NIP}}
+    </p>
+<!--  TODO: Dodać ikony  -->
+<!--  TODO: Podpiąć linki do routów  -->
+    <p class="order-list-item-edit">
+      E
+    </p>
+    <p class="order-list-item-delete">
+      X
+    </p>
+  </div>
+</div>
