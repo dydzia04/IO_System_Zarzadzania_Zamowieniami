@@ -5,12 +5,19 @@ import {FormControl} from '@angular/forms';
 import {FilterService} from '../../services/filter.service';
 import {Observable, Subscriber, Subscription} from 'rxjs';
 
+import {faPencilRuler} from '@fortawesome/free-solid-svg-icons';
+import {faTrashAlt} from '@fortawesome/free-solid-svg-icons';
+
 @Component({
   selector: 'app-orders-list',
   templateUrl: './orders-list.component.html',
   styleUrls: ['./orders-list.component.css']
 })
 export class OrdersListComponent implements OnInit, OnDestroy {
+
+  faPencilRuler = faPencilRuler;
+  faTrashAlt = faTrashAlt;
+
   orderList$: Subscription;
   orderList: Array<IOrder>;
   searchString: FormControl;

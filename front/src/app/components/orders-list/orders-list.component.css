@@ -1,19 +1,29 @@
-.order-search,
+
 .order-list{
   width: 70%;
   margin: auto;
+  text-align: center; 
 }
 
 .order-search{
   display: grid;
   grid-template-columns: 9fr 1fr;
   grid-gap: 1em;
+  margin: 1% auto 1% auto;
+  border: 2px solid rgb(22, 110, 0);
+  text-align: center;
+  width: 70%;
+  height: 2em;
+  font-size: 1.3em;
+  padding-left: 0.5em;
 }
 
 .order-list-header,
 .order-list-item{
   display: grid;
   grid-template-columns: 1fr 5fr 5fr 1fr 1fr;
+  border: 1px solid rgb(22, 110, 0);
+  font-size: 18px;
 }
 
 .order-list-item-delete,
@@ -21,4 +31,28 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.order-list-header{
+  background-color:  rgb(200, 255, 209);
+  font-weight: bold;
+}
+
+.order-list-item:hover{
+  background-color:  rgb(233, 255, 236);
+  font-weight: bold;
+  cursor: default;
+}
+
+.title_column{
+  text-align: center;
+  color: rgb(18, 92, 0);
+  font-size: 22px;
+  font-weight: 600;
+  cursor: default;
+}
+
+.Order_List_Icon{
+  cursor: pointer;
+  color: rgb(18, 92, 0);
 }
