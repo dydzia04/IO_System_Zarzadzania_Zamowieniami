@@ -4,13 +4,13 @@
 
 <div class="order-list">
   <div class="order-list-header">
-    <p>
+    <p class="title_column">
       Lp.
     </p>
-    <p>
+    <p class="title_column">
       Nazwa zamówienia
     </p>
-    <p>
+    <p class="title_column">
       NIP Kontrahenta
     </p>
     <p></p>
@@ -29,10 +29,10 @@
 <!--  TODO: Dodać ikony  -->
 <!--  TODO: Podpiąć linki do routów  -->
     <p class="order-list-item-edit">
-      E
+      <fa-icon routerLink="/" [icon]="faPencilRuler" class="Order_List_Icon"></fa-icon>
     </p>
     <p class="order-list-item-delete">
-      X
+      <fa-icon routerLink="/" [icon]="faTrashAlt" class="Order_List_Icon"></fa-icon>
     </p>
   </div>
 </div>
