@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {faHome} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-top-bar',
@@ -6,8 +7,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./top-bar.component.css']
 })
 export class TopBarComponent implements OnInit {
+  faHome = faHome;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
   }
