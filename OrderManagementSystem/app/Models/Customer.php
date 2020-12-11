@@ -10,8 +10,8 @@ class Customer extends Model
 {
     use HasFactory;
 
-    public $table='customers';
-    
+    public $table = 'customers';
+
     protected $dates = [
         'created_at',
         'updated_at',
@@ -24,8 +24,7 @@ class Customer extends Model
         'contact_surname',
         'email',
         'phone',
-        'address',
-        'discount'
+        'address'
     ];
 
     protected function serializeDate(DateTimeInterface $date)

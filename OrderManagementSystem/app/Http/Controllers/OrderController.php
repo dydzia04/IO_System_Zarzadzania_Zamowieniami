@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Validator;
 use App\Models\Order;
 use App\Models\Customer;
 use App\Models\Product;
+use PDOException;
 
 class OrderController extends Controller
 {
@@ -27,7 +28,7 @@ class OrderController extends Controller
 
     public function getAllOrders()
     {
-        $orders = Order::with("customer:NIP,id")->get();
+        $orders = Order::with(["customer:NIP,id", "status"])->get();
 
         return response()->json($orders, 200);
     }
@@ -108,8 +109,8 @@ class OrderController extends Controller
 
     public function createOrder(Request $request)
     {
-        DB::beginTransaction();
         try {
+            DB::beginTransaction();
             $customer = Customer::firstWhere('nip', $request['customer']['nip']);
 
             if ($customer === null) // customer does not exists, create
@@ -124,16 +125,23 @@ class OrderController extends Controller
                         'customer.contact_surname' => 'required|string',
                         'customer.email' => 'required|email',
                         'customer.phone' => 'required|string',
-                        'customer.address' => 'required|string',
-                        'customer.discount' => 'required|numeric|between:0,100.00'
+                        'customer.address' => 'required|string'
                     ]
                 );
                 $customer = $customer->create($customerValidated['customer']);
             }
 
+            $date = $request['date'];
+
+            if ($date === null)
+                $date = Carbon::now();
+            else
+                $date = new Carbon("10.12.2020 16:12:18");
+
             // Creating new Order
             $order = new Order();
-            $order->order_name = $this->generateOrderName();
+            $order->created_at = $date;
+            $order->order_name = $this->generateOrderName($date->setHour(0)->setMinute(0)->setSecond(0));
             $order->status_id = 1;
             $order->customer_id = $customer->id;
             $order->save();
@@ -172,6 +180,8 @@ class OrderController extends Controller
 
             DB::commit();
             return response()->json(['created' => $order->load(['customer', 'products'])], 201);
+        } catch (PDOException $e) {
+            return response()->json(['errors' => ['title' => "Database connection problem", 'detail' => $e->getMessage()]], 500);
         } catch (ValidationException $e) {
             DB::rollback();
             return response()->json(['errors' => ['title' => $e->getMessage(), 'detail' => $e->errors()]], 422);
@@ -189,14 +199,14 @@ class OrderController extends Controller
         return response()->json(['deleted' => $order], 200);
     }
 
-    private function generateOrderName()
+    private function generateOrderName($carbonDate)
     {
-        $date  = date('Y') . '/' . date('m') . '/' . date('j');
+        $date  = $carbonDate->year . '/' . $carbonDate->month . '/' . $carbonDate->day;
 
-        $order = Order::whereDate('created_at', Carbon::today())->get();
+        $order = Order::whereDate('created_at', $carbonDate)->get();
         $orderNum = count($order) + 1;
 
-        $name = "ZM/" . $date . '/NR/' . $orderNum;
+        $name = 'ZM/' . $date . '/NR/' . $orderNum;
         return $name;
     }
 }
