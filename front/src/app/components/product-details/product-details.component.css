@@ -1,0 +1,63 @@
+.product-details{
+    width: 70%;
+    margin-top: 2em;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+.product-board{
+    margin: auto;
+  }
+
+.product-info{
+    background-color: white;
+    width: 70%;
+    margin: auto;
+    border: 3px solid  rgb(18, 92, 0);
+    padding: 0.5em;
+    text-indent: 1em;
+  }
+.product-details-title{
+    text-align: center;
+    color: rgb(18, 92, 0);
+    font-size: 1.7em;
+    font-weight: bold;
+    cursor: default;
+}
+.product{
+    color: rgb(18, 92, 0);
+    cursor: default;
+    font-size: 1.4em;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+}
+.contrete-info{
+    color: black;
+    font-weight: 600;
+}
+
+.back{
+  margin-top: 1em;
+  background-color: rgb(200, 255, 209); 
+  color: rgb(18, 92, 0);
+  border: 2px solid rgb(18, 92, 0);
+  padding: 0.3em;
+  cursor: pointer;
+  font-size: 1.4em;
+}
+
+.back:hover{
+  background-color: rgb(233, 255, 236);
+}
+
+
+
+
+
+
+
+
+
+
+
+

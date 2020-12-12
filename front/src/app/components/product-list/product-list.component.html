@@ -1,17 +1,25 @@
 <div class="product-search">
-  <input type="text" [formControl]="searchString">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-9"><input type="text" [formControl]="searchString" class="searchInput"></div>
+    </div>
+  </div>
 </div>
+
+<!-- <div class="product-search">
+  <input type="text" [formControl]="searchString" class="searchInput">
+</div> -->
 
 <div class="product-list">
   <div class="product-list-header">
-    <p>
+    <p class="title_column">
       Lp.
     </p>
-    <p>
+    <p class="title_column">
       Nazwa produktu
     </p>
-    <p>
-      Cena netto
+    <p class="title_column">
+      Cena netto (PLN)
     </p>
     <p></p>
     <p></p>
@@ -27,9 +35,9 @@
       {{product.cena_netto}}
     </p>
     <p>
-      Ikona koszyka
+      <fa-icon [icon]="faShoppingCart" class="Product_List_Icon"></fa-icon>
     </p>
-    <p routerLink="/product-details/{{product.id}}">
+    <p routerLink="/product-details/{{product.id}}" class="details">
       Szczegóły
     </p>
   </div>
