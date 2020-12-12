@@ -5,12 +5,16 @@ import {FormControl} from '@angular/forms';
 import {ApiService} from '../../services/api.service';
 import {FilterService} from '../../services/filter.service';
 
+import {faShoppingCart} from '@fortawesome/free-solid-svg-icons';
+
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.css']
 })
 export class ProductListComponent implements OnInit, OnDestroy {
+
+  faShoppingCart = faShoppingCart;
   productList$: Subscription;
   productList: Array<IProduct>;
   searchString: FormControl;

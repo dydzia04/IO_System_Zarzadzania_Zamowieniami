@@ -30,7 +30,9 @@
   border: 1px solid rgb(22, 110, 0);
   font-size: 18px;
 }
-
+.order-list-item{
+  background-color: white;
+}
 .order-list-item-delete,
 .order-list-item-edit{
   display: flex;

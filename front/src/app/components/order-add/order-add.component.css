@@ -1,0 +1,51 @@
+.order-add{
+    width: 70%;
+    margin-top: 2em;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .order-add-board{
+    width: 70%;
+    margin: auto;
+    border: 3px solid  rgb(18, 92, 0);
+    background-color: white;
+    padding: 0.5em;
+    text-indent: 1em;
+  }
+
+  .order-add-title{
+    text-align: center;
+    color: rgb(18, 92, 0);
+    font-size: 1.7em;
+    font-weight: bold;
+    cursor: default;
+}
+.contrete-date{
+  color: rgb(18, 92, 0);
+  font-size: 1.4em;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  cursor: default;
+}
+.btn-add{
+  margin-top: 1em;
+  background-color: rgb(200, 255, 209); 
+  color: rgb(18, 92, 0);
+  border: 2px solid rgb(18, 92, 0);
+  padding: 0.3em;
+  cursor: pointer;
+  font-size: 1.4em;
+}
+
+.btn-add:hover{
+    background-color: rgb(233, 255, 236);
+}
+
+.input_style{
+  width: 100%;
+  max-width: 20em;
+  border: 2px solid rgb(18, 92, 0);
+  padding: 0.25em;
+  cursor: pointer;
+}
