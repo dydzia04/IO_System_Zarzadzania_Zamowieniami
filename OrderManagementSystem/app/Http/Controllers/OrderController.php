@@ -22,7 +22,7 @@ class OrderController extends Controller
     {
         $order = Order::findOrFail($id);
 
-        $order = $order->load(['customer', 'products']);
+        $order = $order->load(['customer', 'products', 'status']);
 
         return response()->json($order, 200);
     }
@@ -58,10 +58,12 @@ class OrderController extends Controller
 
         if ($order === null)
             return response()->json(['errors' => ['title' => 'Invalid order id', 'detail' => 'Order identified by id: "' . $id . '}" doesn\'t exist in database.']], 422);
-
-        $status = $request->validate(['status_id' => 'required|exists:order_status']);
-
-        $order->status_id = $status;
+        try {
+            $status = $request->validate(['status_id' => 'required|exists:order_status,id']);
+        } catch (ValidationException $e) {
+            return response()->json(['errors' => ['title' => $e->getMessage(), 'detail' => $e->errors()]], 422);
+        }
+        $order->status_id = $status["status_id"];
         $order->save();
 
         return response()->json(['updated' => $order], 200);
@@ -106,13 +108,14 @@ class OrderController extends Controller
 
                 $productDB = $productDB->create($validator->validate());
             }
+            $details = ['quantity' => $product['quantity'], 'discountedPrice' => isset($product['discountedPrice']) ? $product['discountedPrice'] : null];
 
-            $order->products()->attach($productDB->id, ['quantity' => $product['quantity']]);
+            $order->products()->attach($productDB->id, $details);
         }
 
         $order->save();
 
-        return response()->json(['updated' => $order->load(['products'])], 200);
+        return response()->json(['updated' => $order->load(['customer', 'products'])], 200);
 
         // } catch (ValidationException $e) {
         //     DB::rollback();
@@ -197,7 +200,9 @@ class OrderController extends Controller
                     $productDB = $productDB->create($validator->validate());
                 }
 
-                $order->products()->attach($productDB->id, ['quantity' => $product['quantity']]);
+                $details = ['quantity' => $product['quantity'], 'discountedPrice' => isset($product['discountedPrice']) ? $product['discountedPrice'] : null];
+
+                $order->products()->attach($productDB->id, $details);
             }
 
             DB::commit();

@@ -27,7 +27,7 @@ Route::get('/orders', [OrderController::class, 'getAllOrders']);
 Route::get('/orders/{id}', [OrderController::class, 'getOrder']);
 Route::put('/orders/{id}', [OrderController::class, 'updateOrder']);
 
-Route::get('/orders/status', [OrderController::class, 'getAllStatus']);
+Route::get('/orders/status/all', [OrderController::class, 'getAllStatus']);
 Route::put('/orders/status/{id}', [OrderController::class, 'changeStatus']);
 
 Route::get('/orders/customer/{nip}', [OrderController::class, 'getForCustomer']);
