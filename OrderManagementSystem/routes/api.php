@@ -23,13 +23,13 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::resource('/xd', TestController::class);
 
-Route::get('/status', [OrderController::class, 'getAllStatus']);
-Route::put('/status/{id}', [OrderController::class, 'changeStatus']);
-
-
 Route::get('/orders', [OrderController::class, 'getAllOrders']);
 Route::get('/orders/{id}', [OrderController::class, 'getOrder']);
 Route::put('/orders/{id}', [OrderController::class, 'updateOrder']);
+
+Route::get('/orders/status', [OrderController::class, 'getAllStatus']);
+Route::put('/orders/status/{id}', [OrderController::class, 'changeStatus']);
+
 Route::get('/orders/customer/{nip}', [OrderController::class, 'getForCustomer']);
 Route::post('/orders', [OrderController::class, 'createOrder']);
 Route::delete('/orders/{id}', [OrderController::class, 'removeOrder']);
