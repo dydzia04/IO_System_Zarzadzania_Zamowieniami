@@ -35,7 +35,7 @@
       {{product.cena_netto}}
     </p>
     <p>
-      <fa-icon [icon]="faShoppingCart" class="Product_List_Icon"></fa-icon>
+      <fa-icon routerLink="/cart/" [icon]="faShoppingCart" class="Product_List_Icon"></fa-icon>
     </p>
     <p routerLink="/product-details/{{product.id}}" class="details">
       Szczegóły
