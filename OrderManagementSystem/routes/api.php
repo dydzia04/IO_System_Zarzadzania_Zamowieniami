@@ -23,6 +23,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::resource('/xd', TestController::class);
 
+Route::get('/status', [OrderController::class, 'getAllStatus']);
+Route::put('/status/{id}', [OrderController::class, 'changeStatus']);
+
 
 Route::get('/orders', [OrderController::class, 'getAllOrders']);
 Route::get('/orders/{id}', [OrderController::class, 'getOrder']);

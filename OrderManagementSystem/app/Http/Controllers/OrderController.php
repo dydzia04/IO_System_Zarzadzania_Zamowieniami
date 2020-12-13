@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Validator;
 use App\Models\Order;
 use App\Models\Customer;
 use App\Models\Product;
+use App\Models\Status;
 use PDOException;
 
 class OrderController extends Controller
@@ -43,6 +44,27 @@ class OrderController extends Controller
         $orders = Order::where('customer_id', $customer->id)->get()->load(['products']);
 
         return response()->json($orders, 200);
+    }
+
+    public function getAllStatus()
+    {
+        $all = Status::all();
+        return response()->json($all, 200);
+    }
+
+    public function changeStatus(Request $request, $id)
+    {
+        $order = Order::firstWhere('id', $id);
+
+        if ($order === null)
+            return response()->json(['errors' => ['title' => 'Invalid order id', 'detail' => 'Order identified by id: "' . $id . '}" doesn\'t exist in database.']], 422);
+
+        $status = $request->validate(['status_id' => 'required|exists:order_status']);
+
+        $order->status_id = $status;
+        $order->save();
+
+        return response()->json(['updated' => $order], 200);
     }
 
     public function updateOrder(Request $request, $id)
