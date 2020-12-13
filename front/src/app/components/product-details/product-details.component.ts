@@ -3,6 +3,7 @@ import {faCogs} from '@fortawesome/free-solid-svg-icons';
 import {faArrowLeft} from '@fortawesome/free-solid-svg-icons';
 
 
+
 @Component({
   selector: 'app-product-details',
   templateUrl: './product-details.component.html',

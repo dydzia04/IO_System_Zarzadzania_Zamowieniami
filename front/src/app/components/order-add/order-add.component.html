@@ -3,22 +3,84 @@
 
         <p class="order-add-title"><fa-icon [icon]="faPencilAlt" class="Order_Add"></fa-icon> Dodaj zamówienie: </p>
 
-        <p class="contrete-date">
-            NIP:
-            <input type="text" id="nip" name="nip" class="input_style">
-        </p>
-
-        <p class="contrete-date">
-           Data:
-            <input type="date" id="date" name="date" class="input_style">
-        </p>
-
-        <!-- <p class="contrete-date">
-           Zróbcie co tu ma być, ostylowane już w miarę jest.
-         </p> -->
-
-          <button class="btn-add">
-                Dodaj
+        <div id="wrapper">
+            <!-- Niepotrzebne wywal -->
+            <div id="first">
+                <p class="contrete-date">
+                    NIP: <span class="contrete-info">pobrane dane WYBRANEGO klienta</span>
+                </p>
+                <p class="contrete-date">
+                    Nazwa: <span class="contrete-info">pobrane dane WYBRANEGO klienta</span>
+                </p>
+                <p class="contrete-date">
+                    Imię: <span class="contrete-info">pobrane dane WYBRANEGO klienta</span>
+                </p>
+                <p class="contrete-date">
+                    Nazwisko: <span class="contrete-info">pobrane dane WYBRANEGO klienta</span>
+                </p>
+                <p class="contrete-date">
+                    Email: <span class="contrete-info">pobrane dane WYBRANEGO klienta</span>
+                </p>
+                <p class="contrete-date">
+                    Telefon: <span class="contrete-info">pobrane dane WYBRANEGO klienta</span>
+                </p>
+                <p class="contrete-date">
+                    Stworzony: <span class="contrete-info">pobrane dane WYBRANEGO klienta</span>
+                </p>
+                <p class="contrete-date">
+                    Edytowany: <span class="contrete-info">pobrane dane WYBRANEGO klienta</span>
+                </p>
+                <p class="contrete-date">
+                    Zniżka: <span class="contrete-info">pobrane dane WYBRANEGO klienta</span>
+                </p>
+            </div>
+            <div id="second">
+                <div class="product-order-list">
+                    <div class="product-order-list-header">
+                        <p class="title_column">
+                            Lp.
+                        </p>
+                        <p class="title_column">
+                            Nazwa produktu
+                        </p>
+                        <p class="title_column">
+                            Cena (PLN)
+                        </p>
+                        <p class="title_column">
+                            Ilość
+                        </p>
+                        <p class="title_column">
+                            Usuń
+                        </p>
+                    </div>
+                    <div  class="product-order-list-item"> <!-- *ngFor="let product of productList; let i = index" -->
+                        <p>
+                            data to output
+                        </p>
+                        <p>
+                            data to output
+                        </p>
+                        <p>
+                            data to output
+                        </p>
+                        <p>
+                            <fa-icon [icon]="faPlusCircle" class="Product_List_Icon"></fa-icon> 
+                            data to output
+                            <fa-icon [icon]="faMinusCircle" class="Product_List_Icon"></fa-icon>
+                        </p>
+                        <p>
+                            <fa-icon [icon]="faTrashAlt" class="Product_List_Icon"></fa-icon>
+                        </p>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button routerLink="/" class="back">
+            <fa-icon [icon]="faArrowLeft"></fa-icon> Powrót
+          </button>
+          <button routerLink="/" class="save">
+            <fa-icon [icon]="faCheckCircle"></fa-icon> Zapisz
           </button>
                 
             

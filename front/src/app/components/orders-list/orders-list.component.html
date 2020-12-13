@@ -17,6 +17,9 @@
     <p class="title_column">
       NIP Kontrahenta
     </p>
+    <p class="title_column">
+      Status
+    </p>
     <p></p>
     <p></p>
   </div>
@@ -30,9 +33,13 @@
     <p>
       {{order.customer.NIP}}
     </p>
-<!--  TODO: Podpiąć linki do routów  -->
+    <p>
+      <!-- {{order.status}} -->
+      status
+    </p>
+    <!--  TODO: Podpiąć linki do routów  -->
     <p class="order-list-item-edit">
-      <fa-icon routerLink="/" [icon]="faPencilRuler" class="Order_List_Icon"></fa-icon>
+      <fa-icon routerLink="/edit/" [icon]="faInfoCircle" class="Order_List_Icon"></fa-icon>
     </p>
     <p class="order-list-item-delete">
       <fa-icon routerLink="/" [icon]="faTrashAlt" class="Order_List_Icon"></fa-icon>
