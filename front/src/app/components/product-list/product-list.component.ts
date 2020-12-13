@@ -1,6 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import IProduct from '../../interface/IProduct';
-import {Observable, Subscription} from 'rxjs';
+import {Subscription} from 'rxjs';
 import {FormControl} from '@angular/forms';
 import {ApiService} from '../../services/api.service';
 import {FilterService} from '../../services/filter.service';
@@ -36,7 +36,7 @@ export class ProductListComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.productList$.unsubscribe();
+    // this.productList$.unsubscribe();
   }
 
 }
