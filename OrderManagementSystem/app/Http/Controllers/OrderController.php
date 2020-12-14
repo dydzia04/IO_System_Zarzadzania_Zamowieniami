@@ -199,6 +199,7 @@ class OrderController extends Controller
 
                     $productDB = $productDB->create($validator->validate());
                 }
+                $orderDetails = ['quantity' => $product['quantity'], 'discountedPrice' => isset($product['discountedPrice']) ? $product['discountedPrice'] : null];
 
                 $details = ['quantity' => $product['quantity'], 'discountedPrice' => isset($product['discountedPrice']) ? $product['discountedPrice'] : null];
 

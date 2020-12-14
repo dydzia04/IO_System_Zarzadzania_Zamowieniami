@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import ICustomer from '../interface/ICustomer';
-import IOrder from '../interface/IOrder';
+import IGetOrder from '../interface/IGetOrder';
 import IProduct from '../interface/IProduct';
 import {BehaviorSubject, Observable} from 'rxjs';
 import _ from 'lodash';
@@ -10,20 +10,12 @@ import _ from 'lodash';
 })
 export class FilterService {
   private _listOfCustomers: BehaviorSubject<Array<ICustomer>>;
-  private _listOfOrders: BehaviorSubject<Array<IOrder>>;
+  private _listOfOrders: BehaviorSubject<Array<IGetOrder>>;
   private _listOfProducts: BehaviorSubject<Array<IProduct>>;
 
   constructor() {
     this._listOfCustomers = new BehaviorSubject<Array<ICustomer>>([{id: 0, name: '', nip: ''}]);
-    this._listOfOrders = new BehaviorSubject<Array<IOrder>>([{
-      created_at: '',
-      customer: {NIP: '', id: 0},
-      customer_id: 0,
-      id: 0,
-      order_name: '',
-      status_id: 0,
-      updated_at: ''
-    }]);
+    this._listOfOrders = new BehaviorSubject<Array<IGetOrder>>([]);
     this._listOfProducts = new BehaviorSubject<Array<IProduct>>([
       {cena_netto: 0, czy_usluga: 0, id: 0, nazwa_produktu: '', opis: '', podatek: 0}
     ]);
@@ -33,7 +25,7 @@ export class FilterService {
     return this._listOfCustomers.asObservable();
   }
 
-  get listOfOrders(): Observable<Array<IOrder>> {
+  get listOfOrders(): Observable<Array<IGetOrder>> {
     return this._listOfOrders.asObservable();
   }
 
@@ -45,7 +37,7 @@ export class FilterService {
     this._listOfCustomers.next(value);
   }
 
-  setNewListOfOrders(value: Array<IOrder>): void {
+  setNewListOfOrders(value: Array<IGetOrder>): void {
     this._listOfOrders.next(value);
   }
 
