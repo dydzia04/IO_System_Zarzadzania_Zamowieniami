@@ -24,28 +24,10 @@
 .contrete-date{
   color: rgb(18, 92, 0);
   cursor: default;
-  font-size: 1.5em;
-}
-.contrete-info{
-    color: black;
-    font-size: 1.3em;
+  font-size: 1.4em;
 }
 
 
-
-
-#wrapper {
-    width: 100%;
-    overflow: hidden; 
-}
-#first {
-    width: 27%;
-    float:left; 
-}
-#second {
-    float:right; 
-    width: 72.5%;
-}
 
 /* ....................... */
 

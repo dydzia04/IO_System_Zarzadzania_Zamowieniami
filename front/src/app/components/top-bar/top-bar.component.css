@@ -17,16 +17,15 @@
 }
 
 .dropdown{
-  position: relative;
-  display: block;
-  float: right;
-  padding-right: 10em;
- 
+  display: inline-flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  padding-left: 10em;
+  padding-right: 10em; 
 }
 
 .dropbtn{
-  /* Ustawić tego buttona lepiej */
-  background-color: rgb(200, 255, 209); 
+  background-color: rgb(204, 243, 211); 
   color: rgb(18, 92, 0);
   margin-left: 1em; 
   border: 2px solid rgb(18, 92, 0);
@@ -38,6 +37,7 @@
 .dropdown-content{
   display: none;
   position: absolute;
+  justify-content: center;
    min-width: 13em; 
   background-color:white;
   z-index: 1;

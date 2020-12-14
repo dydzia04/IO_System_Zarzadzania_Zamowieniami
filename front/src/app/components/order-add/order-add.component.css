@@ -24,10 +24,9 @@
 .contrete-date{
   color: rgb(18, 92, 0);
   font-size: 1.4em;
-  padding-top: 0.5em;
-  padding-bottom: 0.5em;
   cursor: default;
 }
+
 .btn-add{
   margin-top: 1em;
   background-color: rgb(200, 255, 209); 
@@ -39,30 +38,19 @@
 }
 
 .btn-add:hover{
-    background-color: rgb(233, 255, 236);
+  background-color: rgb(233, 255, 236);
 }
 
 .input_style{
   width: 100%;
-  max-width: 20em;
+  max-width: 8em;
   border: 2px solid rgb(18, 92, 0);
   padding: 0.25em;
   cursor: pointer;
 }
 
 
-#wrapper {
-  width: 100%;
-  overflow: hidden; 
-}
-#first {
-  width: 27%;
-  float:left; 
-}
-#second {
-  float:right; 
-  width: 72.5%;
-}
+
 
 /* ....................... */
 
@@ -80,14 +68,7 @@
  padding-bottom: 1.5em;
  padding-top: 1.5em;
 }
-.searchInput{
- width: 60%;
-height: 2em;
- border: 2px solid rgb(22, 110, 0);
- font-size: 1.3em;
- text-indent: 0.5em;
- background: white;
-}
+
 
 .product-order-list-header,
 .product-order-list-item{
@@ -142,7 +123,7 @@ height: 2em;
   font-size: 1.4em;
 }
 .save{
-    margin-left: 0.5em;
+  margin-left: 0.5em;
 }
 
 .back:hover, .save:hover{
@@ -154,7 +135,4 @@ height: 2em;
   cursor: default;
   font-size: 1.5em;
 }
-.contrete-info{
-    color: black;
-    font-size: 1.3em;
-}
+
