@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Validator;
 use App\Models\Order;
 use App\Models\Customer;
 use App\Models\Product;
+use App\Models\Status;
 use PDOException;
 
 class OrderController extends Controller
@@ -43,6 +44,29 @@ class OrderController extends Controller
         $orders = Order::where('customer_id', $customer->id)->get()->load(['products']);
 
         return response()->json($orders, 200);
+    }
+
+    public function getAllStatus()
+    {
+        $all = Status::all();
+        return response()->json($all, 200);
+    }
+
+    public function changeStatus(Request $request, $id)
+    {
+        $order = Order::firstWhere('id', $id);
+
+        if ($order === null)
+            return response()->json(['errors' => ['title' => 'Invalid order id', 'detail' => 'Order identified by id: "' . $id . '}" doesn\'t exist in database.']], 422);
+        try {
+            $status = $request->validate(['status_id' => 'required|exists:order_status,id']);
+        } catch (ValidationException $e) {
+            return response()->json(['errors' => ['title' => $e->getMessage(), 'detail' => $e->errors()]], 422);
+        }
+        $order->status_id = $status["status_id"];
+        $order->save();
+
+        return response()->json(['updated' => $order], 200);
     }
 
     public function updateOrder(Request $request, $id)
@@ -84,14 +108,14 @@ class OrderController extends Controller
 
                 $productDB = $productDB->create($validator->validate());
             }
-            $orderDetails = ['quantity' => $product['quantity'], 'discountedPrice' => isset($product['discountedPrice']) ? $product['discountedPrice'] : null];
+            $details = ['quantity' => $product['quantity'], 'discountedPrice' => isset($product['discountedPrice']) ? $product['discountedPrice'] : null];
 
-            $order->products()->attach($productDB->id, $orderDetails);
+            $order->products()->attach($productDB->id, $details);
         }
 
         $order->save();
 
-        return response()->json(['updated' => $order->load(['products'])], 200);
+        return response()->json(['updated' => $order->load(['customer', 'products'])], 200);
 
         // } catch (ValidationException $e) {
         //     DB::rollback();
@@ -177,7 +201,9 @@ class OrderController extends Controller
                 }
                 $orderDetails = ['quantity' => $product['quantity'], 'discountedPrice' => isset($product['discountedPrice']) ? $product['discountedPrice'] : null];
 
-                $order->products()->attach($productDB->id, $orderDetails);
+                $details = ['quantity' => $product['quantity'], 'discountedPrice' => isset($product['discountedPrice']) ? $product['discountedPrice'] : null];
+
+                $order->products()->attach($productDB->id, $details);
             }
 
             DB::commit();
