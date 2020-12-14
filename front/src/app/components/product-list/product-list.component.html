@@ -35,9 +35,9 @@
       {{product.cena_netto}}
     </p>
     <p>
-      <fa-icon routerLink="/cart/" [icon]="faShoppingCart" class="Product_List_Icon"></fa-icon>
+      <fa-icon (click)="addObjectToCart(product.id)" routerLink="/cart" [icon]="faShoppingCart" class="Product_List_Icon"></fa-icon>
     </p>
-    <p routerLink="/product-details/{{product.id}}" class="details">
+    <p [routerLink]="['/product-details', product.id]" class="details">
       Szczegóły
     </p>
   </div>
