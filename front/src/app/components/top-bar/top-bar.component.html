@@ -1,22 +1,16 @@
-<!-- <div class="header">
-  <fa-icon routerLink="/" [icon]="faHome"></fa-icon>
-  <p>System zarządzania zamówieniami</p> -->
   <nav class="Navbar">
-    <!-- <b routerLink="/"><i class="fas fa-cogs"></i>ikonka</b> -->
+    
     <fa-icon routerLink="/" [icon]="faHome" class="HomeIcon"></fa-icon>
     <b class="TitleText">System zarządzania zamówieniami</b>
     <div class="dropdown">
       <button class="dropbtn">Menu</button>
       <div class="dropdown-content">
-      <a routerLink="/" routerLinkActive="active" class="Separator"><i class="fas fa-clipboard-list"></i>Lista zamówień</a>
-      <a routerLink="/product-list" routerLinkActive="active" class="Separator"><i class="fas fa-list-ol"></i>Lista produktów</a>
-      <a routerLink="/add" routerLinkActive="active" class="Separator"><i class="fas fa-plus-circle"></i>Dodaj zamówienie</a>
+      <a routerLink="/" routerLinkActive="active">Lista zamówień</a>
+      <a routerLink="/product-list" routerLinkActive="active">Lista produktów</a>
+      <a routerLink="/customer-list" routerLinkActive="active">Lista kontrahentów</a>
+      <a routerLink="/add" routerLinkActive="active">Dodaj zamówienie</a>
+      <a routerLink="/cart" routerLinkActive="active">Koszyk</a>
+      
     </div>
   </div>
   </nav>
-<!-- </div> -->
-
-
-<!-- <a routerLink="/" routerLinkActive="active" class="Separator"><button class="HrefInNav"><i class="fas fa-clipboard-list"></i>Lista zamówień</button></a>
-<a routerLink="/product-list" routerLinkActive="active" class="Separator"><button class="HrefInNav"><i class="fas fa-list-ol"></i>Lista produktów</button></a>
-<a routerLink="/add" routerLinkActive="active" class="Separator"><button class="HrefInNav"><i class="fas fa-plus-circle"></i>Dodaj zamówienie</button></a> -->

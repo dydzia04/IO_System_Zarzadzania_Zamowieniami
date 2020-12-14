@@ -1,1 +1,58 @@
-<p>cart works!</p>
+<!-- tutaj zrobiliśmy jakiś początek do koszyka, jak będziesz tutaj działać to możesz wszystko zakomentować a my jak będziemy robić to ogarniemy-->
+<div class="cart-details">
+    <div class="cart-board">
+      <div class="cart-info">
+        <p class="cart-title"><fa-icon [icon]="faShoppingBasket" class="Product_Details"></fa-icon> Koszyk: </p> 
+  
+  
+    <div class="cart-list">
+      <div class="cart-list-header">
+        <p class="title-column">
+          Id:        
+        </p>
+        <p class="title-column">
+          Nazwa produktu:        
+        </p>
+        <p class="title-column">
+          Cena:   
+        </p>
+        <p class="title-column">
+          Ilość:   
+        </p>
+        <p class="title-column">
+          Usuń:   
+        </p>
+      </div>
+      </div>
+      <!-- dodać ngFor i routy-->
+      <div class="cart-list-item">
+        <p>
+          id
+         </p>
+         <p>
+          nazwa
+         </p>
+         <p>
+          nazwa
+         </p>
+    <!--  TODO: Podpiąć linki do routów i je zmienić -->
+    <p>
+      <fa-icon [icon]="faPlusCircle" class="Product_List_Icon"></fa-icon> 
+      ilość
+      <fa-icon [icon]="faMinusCircle" class="Product_List_Icon"></fa-icon>
+  </p>
+  <p>
+      <fa-icon [icon]="faTrashAlt" class="Product_List_Icon"></fa-icon>
+  </p>
+        
+      </div>
+        <button routerLink="/product-list/" class="back">
+          <fa-icon [icon]="faArrowLeft"></fa-icon> Powrót
+        </button>
+        <button routerLink="/product-list/" class="submit-order">
+          <fa-icon [icon]="faCheckCircle"></fa-icon> Zamów
+        </button>
+      </div>
+    </div>
+    
+  </div>

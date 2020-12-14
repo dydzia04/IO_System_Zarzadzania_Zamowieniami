@@ -1,0 +1,160 @@
+.order-add{
+    width: 100%;
+    margin-top: 2em;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .order-add-board{
+    width: 90%;
+    margin: auto;
+    border: 3px solid  rgb(18, 92, 0);
+    background-color: white;
+    padding: 0.5em;
+    text-indent: 1em;
+  }
+
+  .order-add-title{
+    text-align: center;
+    color: rgb(18, 92, 0);
+    font-size: 1.7em;
+    font-weight: bold;
+    cursor: default;
+}
+.contrete-date{
+  color: rgb(18, 92, 0);
+  font-size: 1.4em;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  cursor: default;
+}
+.btn-add{
+  margin-top: 1em;
+  background-color: rgb(200, 255, 209); 
+  color: rgb(18, 92, 0);
+  border: 2px solid rgb(18, 92, 0);
+  padding: 0.3em;
+  cursor: pointer;
+  font-size: 1.4em;
+}
+
+.btn-add:hover{
+    background-color: rgb(233, 255, 236);
+}
+
+.input_style{
+  width: 100%;
+  max-width: 20em;
+  border: 2px solid rgb(18, 92, 0);
+  padding: 0.25em;
+  cursor: pointer;
+}
+
+
+#wrapper {
+  width: 100%;
+  overflow: hidden; 
+}
+#first {
+  width: 27%;
+  float:left; 
+}
+#second {
+  float:right; 
+  width: 72.5%;
+}
+
+/* ....................... */
+
+.product-order-list{
+  width: 100%;
+  margin: auto;
+  text-align: center; 
+}
+
+.product-order-search{
+  width: 100%; 
+ margin: 1em auto 1em auto;
+ height: 2em;
+ text-align: center;
+ padding-bottom: 1.5em;
+ padding-top: 1.5em;
+}
+.searchInput{
+ width: 60%;
+height: 2em;
+ border: 2px solid rgb(22, 110, 0);
+ font-size: 1.3em;
+ text-indent: 0.5em;
+ background: white;
+}
+
+.product-order-list-header,
+.product-order-list-item{
+  display: grid;
+  grid-template-columns: 1fr 5fr 3fr 2fr 1fr;
+  border: 1px solid rgb(22, 110, 0);
+  font-size: 18px;
+  text-align: center;
+}
+.product-order-list-item{
+  background-color: white;
+  
+}
+.product-order-list-item-delete,
+.product-order-list-item-edit{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.product-order-list-header{
+  background-color:  rgb(200, 255, 209);
+  font-weight: bold;
+}
+
+.product-order-list-item:hover{
+  background-color:  rgb(233, 255, 236);
+  font-weight: bold;
+  cursor: default;
+}
+
+.title_column{
+  text-align: center;
+  color: rgb(18, 92, 0);
+  font-size: 22px;
+  font-weight: 600;
+  cursor: default;
+}
+
+.Product_List_Icon{
+  cursor: pointer;
+  color: rgb(18, 92, 0);
+}
+
+.back, .save{
+  margin-top: 0.5em;
+  background-color: rgb(200, 255, 209); 
+  color: rgb(18, 92, 0);
+  border: 2px solid rgb(18, 92, 0);
+  padding: 0.3em;
+  cursor: pointer;
+  font-size: 1.4em;
+}
+.save{
+    margin-left: 0.5em;
+}
+
+.back:hover, .save:hover{
+  background-color: rgb(233, 255, 236);
+}
+
+.contrete-date{
+  color: rgb(18, 92, 0);
+  cursor: default;
+  font-size: 1.5em;
+}
+.contrete-info{
+    color: black;
+    font-size: 1.3em;
+}

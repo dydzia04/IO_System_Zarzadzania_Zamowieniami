@@ -3,6 +3,7 @@ import ICustomer from '../interface/ICustomer';
 import IOrder from '../interface/IOrder';
 import IProduct from '../interface/IProduct';
 import {BehaviorSubject, Observable} from 'rxjs';
+import _ from 'lodash';
 
 @Injectable({
   providedIn: 'root'
@@ -50,5 +51,16 @@ export class FilterService {
 
   setNewListOfProducts(value: Array<IProduct>): void {
     this._listOfProducts.next(value);
+  }
+
+  getProductByID(argID: number): any {
+    let products = {};
+    const list$ = this.listOfProducts
+      .subscribe(data => {
+        products = data;
+      });
+    list$.unsubscribe();
+    // tslint:disable-next-line:triple-equals
+    return _.find(products, (object: IProduct) => object.id == argID);
   }
 }
