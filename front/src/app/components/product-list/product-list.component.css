@@ -15,22 +15,23 @@
 .searchInput{
  width: 60%;
 height: 2em;
- border: 2px solid rgb(22, 110, 0);
+ border: 2px solid rgb(209, 171, 0);
  font-size: 1.3em;
  text-indent: 0.5em;
- background: white;
+ background: rgb(90, 90, 90);
 }
 
 .product-list-header,
 .product-list-item{
   display: grid;
   grid-template-columns: 1fr 5fr 5fr 1fr 1fr;
-  border: 1px solid rgb(22, 110, 0);
+  border: 1px solid rgb(209, 171, 0);
   font-size: 18px;
   text-align: center;
 }
 .product-list-item{
-  background-color: white;
+  background-color:  rgb(80, 80, 80);
+  color: rgb(245,245,245);
 }
 .product-list-item-delete,
 .product-list-item-edit{
@@ -40,19 +41,19 @@ height: 2em;
 }
 
 .product-list-header{
-  background-color:  rgb(200, 255, 209);
+  background-color:  rgb(58, 58, 58);
   font-weight: bold;
 }
 
 .product-list-item:hover{
-  background-color:  rgb(233, 255, 236);
+  background-color:  rgb(90, 90, 90);
   font-weight: bold;
   cursor: default;
 }
 
 .title_column{
   text-align: center;
-  color: rgb(18, 92, 0);
+  color: rgb(252, 206, 0);
   font-size: 22px;
   font-weight: 600;
   cursor: default;
@@ -61,7 +62,7 @@ height: 2em;
 .Product_List_Icon,
 .details{
   cursor: pointer;
-  color: rgb(18, 92, 0);
+  color: rgb(252, 206, 0);
 }
 .details{
   margin-left: 1.5em;
