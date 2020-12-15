@@ -4,7 +4,6 @@ import IGetOrder from '../../interface/IGetOrder';
 import { FormControl } from '@angular/forms';
 import { FilterService } from '../../services/filter.service';
 import { Subscription } from 'rxjs';
-
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 
