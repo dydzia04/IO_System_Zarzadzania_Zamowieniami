@@ -14,6 +14,7 @@
     text-indent: 1em;
   }
 
+
 .order-info-title{
     text-align: center;
     color: rgb(252, 206, 0);
@@ -22,12 +23,27 @@
     cursor: default;
 }
 .contrete-date{
-  color: white;
+  color: rgb(18, 92, 0);
   cursor: default;
-  font-size: 1.4em;
+  font-size: 1.5em;
+}
+.contrete-info{
+    color: black;
+    font-size: 1.3em;
 }
 
-
+#wrapper {
+    width: 100%;
+    overflow: hidden; 
+}
+#first {
+    width: 27%;
+    float:left; 
+}
+#second {
+    float:right; 
+    width: 72.5%;
+}
 
 /* ....................... */
 
@@ -47,7 +63,7 @@
   }
   .searchInput{
    width: 60%;
-  height: 2em;
+   height: 2em;
    border: 2px solid rgb(209, 171, 0);
    font-size: 1.3em;
    text-indent: 0.5em;
@@ -64,8 +80,7 @@
   }
   .product-order-list-item{
     background-color: rgb(80, 80, 80);
-  color: rgb(245,245,245);
-    
+    color: rgb(245,245,245);
   }
   .product-order-list-item-delete,
   .product-order-list-item-edit{
@@ -103,6 +118,7 @@
     background-color: rgb(209, 171, 0);
     color: black;
     border: 2px solid black;
+
     padding: 0.3em;
     cursor: pointer;
     font-size: 1.4em;

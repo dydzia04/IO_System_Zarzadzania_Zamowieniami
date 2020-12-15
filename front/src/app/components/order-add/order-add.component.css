@@ -49,9 +49,6 @@
   cursor: pointer;
 }
 
-
-
-
 /* ....................... */
 
 .product-order-list{
@@ -69,7 +66,6 @@
  padding-top: 1.5em;
 }
 
-
 .product-order-list-header,
 .product-order-list-item{
   display: grid;
@@ -80,8 +76,7 @@
 }
 .product-order-list-item{
   background-color: rgb(80, 80, 80);
-  color: rgb(245,245,245);
-  
+  color: rgb(245,245,245);  
 }
 .product-order-list-item-delete,
 .product-order-list-item-edit{
@@ -136,4 +131,3 @@
   cursor: default;
   font-size: 1.5em;
 }
-

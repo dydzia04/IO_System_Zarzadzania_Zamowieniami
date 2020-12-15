@@ -6,6 +6,7 @@ import {ApiService} from '../../services/api.service';
 import {FilterService} from '../../services/filter.service';
 
 import {faShoppingCart} from '@fortawesome/free-solid-svg-icons';
+import {CartService} from '../../services/cart.service';
 
 @Component({
   selector: 'app-product-list',
@@ -22,6 +23,7 @@ export class ProductListComponent implements OnInit, OnDestroy {
   constructor(
     private api: ApiService,
     private filter: FilterService,
+    private cart: CartService,
   ) {
     this.productList$ = new Subscription();
     this.productList = new Array<IProduct>();
@@ -36,7 +38,10 @@ export class ProductListComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    // this.productList$.unsubscribe();
   }
 
+  addObjectToCart( objectID: number ): void{
+    const product = this.filter.getProductByID(objectID);
+    this.cart.addToCart(product);
+  }
 }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class DeleteCustomersDiscount extends Migration
+class AddOrderProductDiscountedPrice extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,9 @@ class DeleteCustomersDiscount extends Migration
      */
     public function up()
     {
-        if (Schema::hasColumn('customers', 'discount')) {
-
-            Schema::table('customers', function (Blueprint $table) {
-
-                $table->dropColumn('discount');
-            });
-        }
+        Schema::table('order_product', function (Blueprint $table) {
+            $table->decimal('discountedPrice', 8, 2)->nullable();
+        });
     }
 
     /**
@@ -29,8 +25,8 @@ class DeleteCustomersDiscount extends Migration
      */
     public function down()
     {
-        Schema::table('customers', function (Blueprint $table) {
-            $table->decimal('discount', 3, 2);
+        Schema::table('order_product', function (Blueprint $table) {
+            $table->dropColumn('discountedPrice');
         });
     }
 }
