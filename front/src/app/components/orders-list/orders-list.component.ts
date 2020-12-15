@@ -30,7 +30,8 @@ export class OrdersListComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.api.setFilterableListOfOrders();
+    // this.api.setFilterableListOfOrders();
+    this.api.getOrdersFromAPI();
     this.orderList$ = this.filter.listOfOrders.subscribe((data: Array<IGetOrder>) => {
       this.orderList = data;
     });

@@ -15,6 +15,9 @@ export class ApiService {
   private exampleListOfCustomers: Array<ICustomer>;
   private exampleCustomer: ICustomer;
 
+  private BASE = 'http://127.0.0.1:8000/api';
+  private ORDERS = '/orders';
+
   constructor(
     private filterService: FilterService,
     private http: HttpClient,
@@ -311,12 +314,9 @@ export class ApiService {
     };
   }
 
-  setFilterableListOfOrders(listOfOrders?: Array<IGetOrder>): void {
-    const toRet: Array<IGetOrder> = [];
-    for (let i = 0; i < 20; i++) {
-      toRet.push(this.exampleOrder);
-    }
-    this.filterService.setNewListOfOrders(toRet);
+  setFilterableListOfOrders(listOfOrders: Array<IGetOrder>): void {
+    console.log(listOfOrders);
+    this.filterService.setNewListOfOrders(listOfOrders);
   }
 
   setFilterableListOfProducts(listOfProducts?: Array<IProduct>): void {
@@ -329,24 +329,21 @@ export class ApiService {
   }
 
   getOrdersFromAPI(): void {
-    const url = '';
-    this.http.get<Array<IGetOrder>>(url)
+    this.http.get<Array<IGetOrder>>( this.BASE + this.ORDERS)
       .subscribe(list => {
         this.setFilterableListOfOrders(list);
       });
   }
 
   getProductsFromAPI(): void {
-    const url = '';
-    this.http.get<Array<IProduct>>(url)
+    this.http.get<Array<IProduct>>( this.BASE )
       .subscribe(list => {
         this.setFilterableListOfProducts(list);
       });
   }
 
   getCustomersFromAPI(): void {
-    const url = '';
-    this.http.get<Array<ICustomer>>(url)
+    this.http.get<Array<ICustomer>>( this.BASE )
       .subscribe(list => {
         this.setFilterableListOfCustomers(list);
       });

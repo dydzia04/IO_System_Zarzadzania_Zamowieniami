@@ -42,7 +42,6 @@ export class CartService {
 
   removeFromCart(id: number): void {
     const product = [...this._cart].filter(object => object.id === id);
-    console.log(product);
     // this.cart.delete();
   }
 }
