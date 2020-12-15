@@ -4,7 +4,6 @@ import IGetOrder from '../../interface/IGetOrder';
 import { FormControl } from '@angular/forms';
 import { FilterService } from '../../services/filter.service';
 import { Subscription } from 'rxjs';
-
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 
@@ -36,6 +35,7 @@ export class OrdersListComponent implements OnInit, OnDestroy {
     this.orderList$ = this.filter.listOfOrders.subscribe((data: Array<IGetOrder>) => {
       this.orderList = data;
     });
+    console.log(this.orderList);
   }
 
   ngOnDestroy(): void {

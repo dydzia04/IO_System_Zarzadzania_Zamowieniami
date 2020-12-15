@@ -15,10 +15,10 @@
   .searchInput{
    width: 60%;
   height: 2em;
-   border: 2px solid rgb(22, 110, 0);
+   border: 2px solid rgb(209, 171, 0);
    font-size: 1.3em;
    text-indent: 0.5em;
-   background: white;
+   background: rgb(90, 90, 90);
   }
   
   .customer-list-header,
@@ -26,28 +26,29 @@
     display: grid;
     /* grid możliwe że jeszcze będzie do zmiany */
     grid-template-columns: 1fr 3fr 5fr 3fr 3fr 3fr 3fr 1fr; 
-    border: 1px solid rgb(22, 110, 0);
+    border: 1px solid  rgb(209, 171, 0);
     font-size: 18px;
     text-align: center;
   }
   .customer-list-item{
-    background-color: white;
+    background-color: rgb(80, 80, 80);
+  color: rgb(245,245,245);
   }
  
   .customer-list-header{
-    background-color:  rgb(200, 255, 209);
+    background-color:  rgb(58, 58, 58);
     font-weight: bold;
   }
   
   .customer-list-item:hover{
-    background-color:  rgb(233, 255, 236);
+    background-color:  rgb(90, 90, 90);;
     font-weight: bold;
     cursor: default;
   }
   
   .title-column{
     text-align: center;
-    color: rgb(18, 92, 0);
+    color:  rgb(252, 206, 0);
     font-size: 22px;
     font-weight: 600;
     cursor: default;
