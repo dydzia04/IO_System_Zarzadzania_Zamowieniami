@@ -98,6 +98,8 @@ System ma na celu automatyczne koordynowanie zamówień według odpowiednio przy
 
     **Komentarz:** Dodanie pola Discount_Group_ID będącej referencą do tabelii Discount_Group definijącą zniżki na dane produkty dla danego klienta w formacie liczbowym(stała wartość np. -15zł) oraz procentowej (np. -10%).
 
+[Postman Swagger](https://documenter.getpostman.com/view/12136197/TVmLAxnp)
+
 ---
 
 ## Algorytmy
