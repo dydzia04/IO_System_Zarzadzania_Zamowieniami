@@ -13,6 +13,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
+import { OrderDetailsComponent} from './components/order-details/order-details.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { ProductDetailsComponent } from './components/product-details/product-de
     TopBarComponent,
     ProductListComponent,
     CartComponent,
-    ProductDetailsComponent
+    ProductDetailsComponent,
+    OrderDetailsComponent
   ],
   imports: [
     BrowserModule,
