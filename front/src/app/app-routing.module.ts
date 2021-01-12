@@ -11,7 +11,7 @@ import { CustomerListComponent } from './components/customer-list/customer-list.
 const routes: Routes = [
   { path: '', component: OrdersListComponent },
   { path: 'add', component: OrderAddComponent },
-  { path: 'edit', component: OrderEditComponent },
+  { path: 'edit/:id', component: OrderEditComponent },  
   { path: 'product-list', component: ProductListComponent },
   { path: 'product-details/:id', component: ProductDetailsComponent },
   { path: 'cart', component: CartComponent },

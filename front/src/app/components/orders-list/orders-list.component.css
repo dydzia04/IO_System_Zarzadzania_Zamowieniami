@@ -6,7 +6,7 @@
 }
 
 .order-search{
-   width: 100%; 
+  width: 100%; 
   margin: 1em auto 1em auto;
   height: 2em;
   text-align: center;
@@ -26,7 +26,7 @@
 .order-list-header,
 .order-list-item{
   display: grid;
-  grid-template-columns: 1fr 5fr 5fr 2fr 1fr 1fr ;
+  grid-template-columns: 1fr 4fr 4fr 2fr 1fr 1fr 2fr ;
   border: 1px solid rgb(209, 171, 0);
   font-size: 18px;
 }
@@ -60,6 +60,7 @@
   cursor: default;
 }
 
+.order-details,
 .Order_List_Icon{
   cursor: pointer;
   color: rgb(252, 206, 0);

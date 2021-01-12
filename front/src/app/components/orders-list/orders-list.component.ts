@@ -35,11 +35,20 @@ export class OrdersListComponent implements OnInit, OnDestroy {
     this.orderList$ = this.filter.listOfOrders.subscribe((data: Array<IGetOrder>) => {
       this.orderList = data;
     });
-    console.log(this.orderList);
   }
 
   ngOnDestroy(): void {
     this.orderList$.unsubscribe();
+  }
+
+  deleteOrderByID( event: Event, id: number ): void {
+    console.log(event);
+    event.preventDefault;
+    this.api.deleteOrder(id);
+    this.api.getOrdersFromAPI();
+    this.orderList$ = this.filter.listOfOrders.subscribe((data: Array<IGetOrder>) => {
+      this.orderList = data;
+    });
   }
 
 }

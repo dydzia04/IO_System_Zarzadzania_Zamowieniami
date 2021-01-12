@@ -5,15 +5,16 @@ import ICustomer from '../interface/ICustomer';
 import {FilterService} from './filter.service';
 import {HttpClient} from '@angular/common/http';
 import _ from 'lodash';
+import { Observable, Subscription } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
   private exampleListOfProducts: Array<Array<IProduct>>;
-  private exampleOrder: IGetOrder;
   private exampleListOfCustomers: Array<ICustomer>;
-  private exampleCustomer: ICustomer;
+  
+  exampleCustomer: Object;
 
   private BASE = 'http://127.0.0.1:8000/api';
   private ORDERS = '/orders';
@@ -192,46 +193,6 @@ export class ApiService {
         }
       ]
     ];
-    this.exampleOrder = {
-      id: 1,
-      order_name: '',
-      customer_id: 1,
-      created_at: '',
-      updated_at: '',
-      status: {
-        id: 1,
-        name: ''
-      },
-      customer: {
-        NIP: '',
-        id: 1,
-        name: 'name',
-        contact_name: 'elo',
-        contact_surname: 'DŁ',
-        email: 'xd@xd.com',
-        phone: '123-123-123',
-        address: 'adres',
-        created_at: '2020-11-30 22:23:39',
-        updated_at: '2020-11-30 22:23:39',
-        discount: '0.00'
-      },
-      products: [
-        {
-          id: 1,
-          product_id: 1,
-          name: '',
-          price: '',
-          description: '',
-          isService: 0,
-          pivot: {
-            order_id: 1,
-            product_id: 1,
-            quantity: 15,
-            discountedPrice: 0.12
-          }
-        },
-      ]
-    };
     this.exampleListOfCustomers = [
       {
         id: 5,
@@ -315,12 +276,10 @@ export class ApiService {
   }
 
   setFilterableListOfOrders(listOfOrders: Array<IGetOrder>): void {
-    console.log(listOfOrders);
     this.filterService.setNewListOfOrders(listOfOrders);
   }
 
   setFilterableListOfProducts(listOfProducts?: Array<IProduct>): void {
-    // _.flatten wypłaszcza tablicę
     this.filterService.setNewListOfProducts(_.flatten(this.exampleListOfProducts));
   }
 
@@ -347,5 +306,13 @@ export class ApiService {
       .subscribe(list => {
         this.setFilterableListOfCustomers(list);
       });
+  }
+
+  deleteOrder(id: number): void {
+    this.http.delete( this.BASE + this.ORDERS + '/' + id );
+  }
+
+  getOrderByID(id: number): Observable<IGetOrder> {
+    return this.http.get( this.BASE + this.ORDERS + "/" + id) as Observable<IGetOrder>;
   }
 }

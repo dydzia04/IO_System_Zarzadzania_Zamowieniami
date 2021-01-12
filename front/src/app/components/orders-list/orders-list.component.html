@@ -23,7 +23,7 @@
     <p></p>
     <p></p>
   </div>
-  <div *ngFor="let order of orderList; let i = index" class="order-list-item" routerLink="/order-details/{{order.id}}">
+  <div *ngFor="let order of orderList; let i = index" class="order-list-item">
     <p>
       {{i+1}}
     </p>
@@ -38,10 +38,13 @@
     </p>
     <!--  TODO: Podpiąć linki do routów  -->
     <p class="order-list-item-edit">
-      <fa-icon routerLink="/edit/" [icon]="faInfoCircle" class="Order_List_Icon"></fa-icon>
+      <fa-icon routerLink="/edit/{{order.id}}" [icon]="faInfoCircle" class="Order_List_Icon"></fa-icon>
     </p>
     <p class="order-list-item-delete">
-      <fa-icon routerLink="/" [icon]="faTrashAlt" class="Order_List_Icon"></fa-icon>
+      <fa-icon (click)="deleteOrderByID($event, order.id)" [icon]="faTrashAlt" class="Order_List_Icon"></fa-icon>
+    </p>
+    <p routerLink="/order-details/{{order.id}}" class="order-details">
+      Szczegóły
     </p>
   </div>
 </div>
