@@ -1,0 +1,129 @@
+.order-details{
+    width: 70%;
+    margin-top: 2em;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+.order-board{
+    margin: auto;
+  }
+
+.order-info{
+    background-color: rgb(70, 70, 70);
+    width: 70%;
+    margin: auto;
+    border: 3px solid  rgb(209, 171, 0);
+    padding: 0.5em;
+    text-indent: 1em;
+  }
+.order-details-title{
+    text-align: center;
+    color: rgb(252, 206, 0);
+    font-size: 1.7em;
+    font-weight: bold;
+    cursor: default;
+}
+.order{
+    color: rgb(252, 206, 0);
+    cursor: default;
+    font-size: 1.4em;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+}
+.contrete-info{
+    color: black;
+    font-weight: 600;
+}
+
+.back{
+  margin-top: 1em;
+  margin-right: 1em;
+  background-color: rgb(209, 171, 0); 
+  color: black;
+  border: 2px solid black;
+  padding: 0.3em;
+  cursor: pointer;
+  font-size: 1.4em;
+}
+
+.back:hover{
+  background-color: rgb(255, 208, 0);
+}
+
+
+.product-order-list{
+    width: 100%;
+    margin: auto;
+    text-align: center; 
+  }
+  
+  .product-order-search{
+    width: 100%; 
+   margin: 1em auto 1em auto;
+   height: 2em;
+   text-align: center;
+   padding-bottom: 1.5em;
+   padding-top: 1.5em;
+  }
+  .searchInput{
+   width: 60%;
+   height: 2em;
+   border: 2px solid rgb(209, 171, 0);
+   font-size: 1.3em;
+   text-indent: 0.5em;
+   background: rgb(90, 90, 90);
+  }
+  
+  .product-order-list-header,
+  .product-order-list-item{
+    display: grid;
+    grid-template-columns: 1fr 5fr 3fr 2fr 1fr;
+    border: 1px solid rgb(209, 171, 0);
+    font-size: 18px;
+    text-align: center;
+  }
+  .product-order-list-item{
+    background-color: rgb(80, 80, 80);
+    color: rgb(245,245,245);
+  }
+  .product-order-list-item-delete,
+  .product-order-list-item-edit{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .product-order-list-header{
+    background-color:  rgb(58, 58, 58);
+    font-weight: bold;
+  }
+  
+  .product-order-list-item:hover{
+    background-color:  rgb(90, 90, 90);
+    font-weight: bold;
+    cursor: default;
+  }
+  
+  .title_column{
+    text-align: center;
+    color: rgb(252, 206, 0);
+    font-size: 22px;
+    font-weight: 600;
+    cursor: default;
+  }
+  
+  .Product_List_Icon{
+    cursor: pointer;
+    color: rgb(252, 206, 0);
+  }
+
+  
+
+
+
+
+
+
+
+
