@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class DatabaseSeeder extends Seeder
 {
@@ -13,6 +14,23 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        DB::table('order_status')->insert(
+            [
+                'id' => 1,
+                'name' => 'Zamówiono'
+            ],
+            [
+                'id' => 2,
+                'name' => 'W realizacji'
+            ],
+            [
+                'id' => 3,
+                'name' => 'Ukończono'
+            ],
+            [
+                'id' => 4,
+                'name' => 'Anulowano'
+            ]
+        );
     }
 }
