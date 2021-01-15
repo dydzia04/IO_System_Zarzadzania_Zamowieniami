@@ -14,6 +14,7 @@ import {HttpClientModule} from '@angular/common/http';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import { OrderDetailsComponent} from './components/order-details/order-details.component';
+import { CustomerDetailsComponent } from './components/customer-details/customer-details.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { OrderDetailsComponent} from './components/order-details/order-details.c
     ProductListComponent,
     CartComponent,
     ProductDetailsComponent,
-    OrderDetailsComponent
+    OrderDetailsComponent,
+    CustomerDetailsComponent
   ],
   imports: [
     BrowserModule,

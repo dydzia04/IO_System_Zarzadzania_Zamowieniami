@@ -21,6 +21,12 @@
     <p class="title_column">
       Cena netto (PLN)
     </p>
+    <p class="title_column">
+      VAT
+    </p>
+    <p class="title_column">
+     Jednostka
+    </p>
     <p></p>
     <p></p>
   </div>
@@ -33,6 +39,12 @@
     </p>
     <p>
       {{product.cena_netto}}
+    </p>
+    <p>
+      VAT
+    </p>
+    <p>
+      KG
     </p>
     <p>
       <fa-icon (click)="addObjectToCart(product.id)" routerLink="/cart" [icon]="faShoppingCart" class="Product_List_Icon"></fa-icon>

@@ -1,33 +1,44 @@
-<!-- tutaj zrobiliśmy jakiś początek do koszyka, jak będziesz tutaj działać to możesz wszystko zakomentować a my jak będziemy robić to ogarniemy-->
 <div class="cart-details">
   <div class="cart-board">
     <div class="cart-info">
       <p class="cart-title">
         <fa-icon [icon]="faShoppingBasket" class="Product_Details"></fa-icon>
-        Koszyk:
+        Tworzenie zamówienia:
       </p>
 
+      <p class="contrete-date">
+        NIP: 
+    </p>
+    <p class="contrete-date">
+        Nazwa firmy: 
+    </p>
+      <button routerLink="/customer-details" class="customer">       
+        Szczegóły kontrahenta
+      </button>
 
       <div class="cart-list">
         <div class="cart-list-header">
           <p class="title-column">
-            Lp:
+            Lp
           </p>
           <p class="title-column">
-            Nazwa produktu:
+            Nazwa produktu
           </p>
           <p class="title-column">
-            Cena:
+            Cena netto
           </p>
           <p class="title-column">
-            Ilość:
+            Cena brutto
           </p>
           <p class="title-column">
-            Usuń:
+            Ilość
+          </p>
+          <p class="title-column">
+            Usuń
           </p>
         </div>
       </div>
-      <!-- dodać ngFor i routy-->
+     
       <div *ngFor="let product of cartArr; let i = index" class="cart-list-item">
         <p>
           {{ i+1 }}
@@ -37,6 +48,9 @@
         </p>
         <p>
           {{product.cena_netto}}
+        </p>
+        <p>
+         cena brutto
         </p>
         <!--  TODO: Podpiąć linki do routów i je zmienić -->
         <p>
@@ -49,11 +63,23 @@
         </p>
 
       </div>
+
+      <p class="contrete-date">
+        Nowa data utworzenia:
+         <input type="date" id="date" name="date" class="input_style">
+      </p>
+      <p class="contrete-date">
+      Całkowita cena netto: 
+      </p>
+      <p class="contrete-date">
+      Całkowita cena brutto:  
+      </p>
+
       <button routerLink="/product-list/" class="back">
         <fa-icon [icon]="faArrowLeft"></fa-icon>
-        Powrót
+        Anuluj
       </button>
-      <button routerLink="/product-list/" class="submit-order">
+      <button routerLink="/add" class="submit-order">
         <fa-icon [icon]="faCheckCircle"></fa-icon>
         Zamów
       </button>

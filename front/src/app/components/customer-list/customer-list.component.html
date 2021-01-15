@@ -1,12 +1,16 @@
 <div class="customer-search">
     <div class="container">
-        <div class="row justify-content-center">
+        <div class="row justify-content-center" style="color:white;">
              <!-- <div class="col-9"><input type="text" [formControl]="searchString" class="searchInput"></div>  -->
             tu będzie searchInput
             <!--searchInput nie działa bo chyba coś źle zrobiłem w customer-list.component.ts 
                     w sensie pokazuje się na stronce ale jest komunikat     Can't bind to 'formControl' since it isn't a known property of 'input'. 
             -->
             <!-- nie wiem czy dobrze zrobiłem customer-list.component.ts także lepiej sprawdzić, ja zrobiłem na podstawie orders-list  -->
+            <button routerLink="/" class="create-order" disabled>
+                
+                Dodaj zamówienie
+              </button>
         </div>
     </div>
 </div>
@@ -24,19 +28,8 @@
         <p class="title-column">
             Nazwa
         </p>
-        <p class="title-column">
-            Imię
-        </p>
-        <p class="title-column">
-            Nazwisko
-        </p>
-        <p class="title-column">
-            Email
-        </p>
-        <p class="title-column">
-            Telefon
-        </p>
-        
+       
+       
 
     </div>
     <!-- <div *ngFor="let product of productList; let i = index" class="customer-list-item"> -->
@@ -46,33 +39,13 @@
             1
         </p>
         <p>
-            <!-- {{product.nazwa_produktu}} -->
+            
             NIP
         </p>
         <p>
-            <!-- {{product.cena_netto}} -->
+           
             Nazwa firmy
         </p>
-        <p>
-           
-            Imię
-        </p>
         
-        <p>
-            Nazwisko
-        </p>
-        <p>
-            Email
-        </p>
-        <p>
-            Telefon
-        </p>
-        <!-- <p routerLink="/product-details/{{product.id}}" class="details"> -->
-        <p>
-            check ikonka
-            <!-- ikonka zwraca błąd Can't bind to 'icon' since it isn't a known property of 'fa-icon'. 
-            są porobione importy -->
-              <!-- <fa-icon routerLink="/cart/" [icon]="faCheckCircle" class="Customers_List_Icon"></fa-icon>  -->
-        </p>
     </div>
 </div>

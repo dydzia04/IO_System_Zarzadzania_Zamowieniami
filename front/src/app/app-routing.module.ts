@@ -8,6 +8,7 @@ import { ProductDetailsComponent } from './components/product-details/product-de
 import { CartComponent } from './components/cart/cart.component';
 import { CustomerListComponent } from './components/customer-list/customer-list.component';
 import { OrderDetailsComponent } from './components/order-details/order-details.component';
+import { CustomerDetailsComponent } from './components/customer-details/customer-details.component'; 
 
 const routes: Routes = [
   { path: '', component: OrdersListComponent },
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'cart', component: CartComponent },
   { path: 'customer-list', component: CustomerListComponent },
   { path: 'order-details', component: OrderDetailsComponent },
+  { path: 'customer-details', component: CustomerDetailsComponent },
 ];
 
 @NgModule({

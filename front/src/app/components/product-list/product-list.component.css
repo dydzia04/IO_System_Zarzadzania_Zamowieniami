@@ -2,6 +2,7 @@
   width: 70%;
   margin: auto;
   text-align: center; 
+  margin-bottom: 10px;
 }
 
 .product-search{
@@ -24,7 +25,7 @@
 .product-list-header,
 .product-list-item{
   display: grid;
-  grid-template-columns: 1fr 5fr 5fr 1fr 1fr;
+  grid-template-columns: 1fr 4fr 3fr 1fr 1fr 1fr 2fr;
   border: 1px solid rgb(209, 171, 0);
   font-size: 18px;
   text-align: center;
