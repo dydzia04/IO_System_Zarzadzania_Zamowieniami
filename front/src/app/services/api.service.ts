@@ -6,6 +6,7 @@ import {FilterService} from './filter.service';
 import {HttpClient} from '@angular/common/http';
 import _ from 'lodash';
 import { Observable, Subscription } from 'rxjs';
+import IStatus from '../interface/IStatus';
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +19,7 @@ export class ApiService {
 
   private BASE = 'http://127.0.0.1:8000/api';
   private ORDERS = '/orders';
+  private STATUS = '/status';
 
   constructor(
     private filterService: FilterService,
@@ -314,5 +316,9 @@ export class ApiService {
 
   getOrderByID(id: number): Observable<IGetOrder> {
     return this.http.get( this.BASE + this.ORDERS + "/" + id) as Observable<IGetOrder>;
+  }
+
+  getStatuses(): Observable<IStatus[]> {
+    return this.http.get( this.BASE + this.ORDERS + this.STATUS + '/all') as Observable<IStatus[]>;
   }
 }

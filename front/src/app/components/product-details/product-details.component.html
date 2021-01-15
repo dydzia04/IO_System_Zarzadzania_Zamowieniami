@@ -3,19 +3,19 @@
     <div class="product-info">
       <p class="product-details-title"><fa-icon [icon]="faCogs" class="Product_Details"></fa-icon> Szczegóły produktu: </p>
       <p class="product">Id produktu: 
-        <span class="contrete-info">data</span>
+        <span class="contrete-info">{{product.id}}</span>
       </p>
       <p class="product">Nazwa:
-        <span class="contrete-info">data</span>
+        <span class="contrete-info">{{product.nazwa_produktu}}</span>
       </p>
       <p class="product">Cena: 
-        <span class="contrete-info">data</span>
+        <span class="contrete-info">{{product.cena_netto}}</span>
       </p>
       <p class="product">Opis: 
-        <span class="contrete-info">data</span>
+        <span class="contrete-info">{{product.opis}}</span>
       </p>
       <p class="product">Czy jest usługą: 
-        <span class="contrete-info">data</span>
+        <span class="contrete-info">{{product.czy_usluga ? 'tak' : 'nie'}}</span>
       </p>
       <button routerLink="/product-list/" class="back">
         <fa-icon [icon]="faArrowLeft"></fa-icon> Powrót

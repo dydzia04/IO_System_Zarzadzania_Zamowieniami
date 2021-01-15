@@ -23,10 +23,10 @@
                     Telefon: {{order.customer.phone}}
                 </p>
                 <p class="contrete-date">
-                    Stworzony: {{order.created_at}}
+                    Stworzony: {{dateCreated}}
                 </p>
                 <p class="contrete-date">
-                    Edytowany: {{order.updated_at}}
+                    Edytowany: {{dateModified}}
                 </p>
                 <p class="contrete-date">
                     Zniżka: {{order.customer.discount}}
@@ -60,12 +60,12 @@
                             {{product.price}}
                         </p>
                         <p>
-                            <fa-icon [icon]="faPlusCircle" (click)="increaseProductQuantity(product.productID)" class="Product_List_Icon"></fa-icon> 
+                            <fa-icon [icon]="faPlusCircle" (click)="increaseProductQuantity(i)" class="Product_List_Icon"></fa-icon> 
                             {{product.quantity}}
-                            <fa-icon [icon]="faMinusCircle" (click)="decreaseProductQuantity(product.productID)" class="Product_List_Icon"></fa-icon>
+                            <fa-icon [icon]="faMinusCircle" (click)="decreaseProductQuantity(i)" class="Product_List_Icon"></fa-icon>
                         </p>
                         <p>
-                            <fa-icon [icon]="faTrashAlt" (click)="deleteProduct(product.productID)" class="Product_List_Icon"></fa-icon>
+                            <fa-icon [icon]="faTrashAlt" (click)="deleteProduct(i)" class="Product_List_Icon"></fa-icon>
                         </p>
                         
                     </div>
@@ -73,25 +73,21 @@
 
         <div class="Edit-panel">
             <p class="contrete-date">
-                Data:
-                 <input type="date" id="date" name="date" class="input_style">
+                Nowa data utworzenia:
+                 <input type="date" id="date" name="date" class="input_style" (change)="setDateOfCreation($event)">
             </p>
             <p class="contrete-date">
                 Status:
-                 <select name="order-status" id="order-status" class="input_style">
-                    <option value="Status1">Status 1</option>
-                    <option value="Status2">Status 2</option>
-                    <option value="Status3">Status 3</option>
-                    <option value="Status4">Status 4</option>
+                 <select name="order-status" id="order-status" class="input_style" #statusSelect>
                   </select>
             </p>
             <button routerLink="/" class="back">
                 <fa-icon [icon]="faArrowLeft"></fa-icon> Powrót
               </button>
-              <button routerLink="/" class="save">
+              <button (click)="saveModifiedOrder()" class="save">
                 <fa-icon [icon]="faCheckCircle"></fa-icon> Zapisz
               </button>
-              <button routerLink="/" class="save">
+              <button class="save">
                 <fa-icon [icon]="faPlusCircle"></fa-icon> Dodaj przedmiot
             </button>
         </div>
