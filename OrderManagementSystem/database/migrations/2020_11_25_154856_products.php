@@ -17,8 +17,9 @@ class Products extends Migration
             $table->id();
             $table->unsignedBigInteger('product_id');
             $table->string('name');
-            $table->decimal('price', 8, 2);
-            $table->string('description');
+            // $table->decimal('price', 8, 2);
+            $table->float('vatRate');
+            $table->string('measureUnit');
             $table->boolean('isService');
         });
     }

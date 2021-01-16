@@ -10,6 +10,8 @@ class Order extends Model
 {
     use HasFactory;
 
+    public $timestamps = true;
+
     public $table = 'orders';
 
     protected $dates = [
@@ -25,7 +27,7 @@ class Order extends Model
 
     public function products()
     {
-        return $this->belongsToMany(Product::class)->withPivot(['quantity', 'discountedPrice']);
+        return $this->belongsToMany(Product::class)->withPivot(['quantity', 'netPrice']);
     }
 
     public function customer()

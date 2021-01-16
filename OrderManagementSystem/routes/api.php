@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\StatusController;
 use App\Http\Controllers\TestController;
 /*
 |--------------------------------------------------------------------------
@@ -21,15 +23,21 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::resource('/xd', TestController::class);
+Route::get('/status', [StatusController::class, 'getAllStatus']);
+
+Route::get('/customers', [CustomerController::class, 'getAllCustomers']);
+Route::get('/customers/{nip}', [CustomerController::class, 'getCustomerByNIP']);
 
 Route::get('/orders', [OrderController::class, 'getAllOrders']);
-Route::get('/orders/{id}', [OrderController::class, 'getOrder']);
-Route::put('/orders/{id}', [OrderController::class, 'updateOrder']);
+Route::post('/orders', [OrderController::class, 'postCreateOrder']);
+Route::get('/orders/{id}', [OrderController::class, 'getOrderById']);
+Route::put('/orders/{id}', [OrderController::class, 'putUpdateOrder']);
+Route::delete('/orders/{id}', [OrderController::class, 'deleteOrder']);
+
+
+
 
 Route::get('/orders/status/all', [OrderController::class, 'getAllStatus']);
 Route::put('/orders/status/{id}', [OrderController::class, 'changeStatus']);
 
 Route::get('/orders/customer/{nip}', [OrderController::class, 'getForCustomer']);
-Route::post('/orders', [OrderController::class, 'createOrder']);
-Route::delete('/orders/{id}', [OrderController::class, 'removeOrder']);

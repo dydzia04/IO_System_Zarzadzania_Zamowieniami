@@ -18,125 +18,36 @@ use PDOException;
 class OrderController extends Controller
 {
 
-    public function getOrder($id)
-    {
-        $order = Order::findOrFail($id);
-
-        $order = $order->load(['customer', 'products', 'status']);
-
-        return response()->json($order, 200);
-    }
-
     public function getAllOrders()
     {
-        $orders = Order::with(["customer:NIP,id", "status"])->get();
-
-        return response()->json($orders, 200);
-    }
-
-    public function getForCustomer($nip)
-    {
-        $customer = Customer::firstWhere('nip', $nip);
-
-        if ($customer === null)
-            return response()->json(['errors' => ['title' => 'Invalid customer nip.', 'detail' => 'Customer identified by nip: "' . $nip . '" doesn\'t exist in database.']], 422);
-
-        $orders = Order::where('customer_id', $customer->id)->get()->load(['products']);
-
-        return response()->json($orders, 200);
-    }
-
-    public function getAllStatus()
-    {
-        $all = Status::all();
-        return response()->json($all, 200);
-    }
-
-    public function changeStatus(Request $request, $id)
-    {
-        $order = Order::firstWhere('id', $id);
-
-        if ($order === null)
-            return response()->json(['errors' => ['title' => 'Invalid order id', 'detail' => 'Order identified by id: "' . $id . '}" doesn\'t exist in database.']], 422);
         try {
-            $status = $request->validate(['status_id' => 'required|exists:order_status,id']);
-        } catch (ValidationException $e) {
-            return response()->json(['errors' => ['title' => $e->getMessage(), 'detail' => $e->errors()]], 422);
+            $orders = Order::with(["customer:NIP,id", "status"])->get();
+            return response()->json($orders, 200);
+        } catch (Exception $e) {
+            return response()->json(['error' =>  $e->getMessage()], 500);
         }
-        $order->status_id = $status["status_id"];
-        $order->save();
-
-        return response()->json(['updated' => $order], 200);
     }
 
-    public function updateOrder(Request $request, $id)
-    {
-        // DB::beginTransaction();
-        // try {
-        $order = Order::firstWhere('id', $id);
-
-        if ($order === null)
-            return response()->json(['errors' => ['title' => 'Invalid order id', 'detail' => 'Order identified by id: "' . $id . '}" doesn\'t exist in database.']], 422);
-
-        $productRequired = $request->validate(
-            [
-                'products' => 'required|array',
-                'products.*.product_id' => 'required|integer',
-                'products.*.quantity' => 'required|numeric|min:1',
-            ]
-        );
-
-        //removing all products associated with order
-        $order->products()->detach();
-
-        foreach ($request['products'] as $product) {
-
-            $productDB = Product::where('product_id', $product['product_id'])->first();
-
-            // create product if does not exists
-            // we don't need to give additional information about product if he exists in database
-            if ($productDB === null) {
-                $productDB = new Product();
-
-                $validator = Validator::make($product, [
-                    'product_id' => 'required|integer',
-                    'name' => 'required|string',
-                    'price' => 'required|numeric|between:0,99999999.99',
-                    'description' => 'required|string',
-                    'isService' => 'required|boolean'
-                ]);
-
-                $productDB = $productDB->create($validator->validate());
-            }
-            $details = ['quantity' => $product['quantity'], 'discountedPrice' => isset($product['discountedPrice']) ? $product['discountedPrice'] : null];
-
-            $order->products()->attach($productDB->id, $details);
-        }
-
-        $order->save();
-
-        return response()->json(['updated' => $order->load(['customer', 'products'])], 200);
-
-        // } catch (ValidationException $e) {
-        //     DB::rollback();
-        //     return response()->json(['errors' => ['title' => $e->getMessage(), 'detail' => $e->errors()]], 422);
-        // } catch (Exception $e) {
-        //     DB::rollback();
-        //     return response()->json(['errors' => $e], 500);
-        // }
-
-
-
-        // $order = $order->update($request->all());
-
-        // return response()->json(['updated' => $order], 200);
-    }
-
-    public function createOrder(Request $request)
+    public function getOrderById($id)
     {
         try {
+            $order = Order::findOrFail($id);
+            $order = $order->with('customer:id,NIP,name')->first()->load(['status', 'products']);
+            return response()->json($order, 200);
+        } catch (Exception $e) {
+            return response()->json(['error' =>  $e->getMessage()], 500);
+        }
+    }
+
+    public function postCreateOrder(Request $request)
+    {
+        // products
+        // date if date specified create order for date
+        try {
+            $customer = $request->validate(['customer.nip' => 'required|string']);
+
             DB::beginTransaction();
-            $customer = Customer::firstWhere('nip', $request['customer']['nip']);
+            $customer = Customer::where('nip', $request['customer']['nip'])->first();
 
             if ($customer === null) // customer does not exists, create
             {
@@ -160,8 +71,6 @@ class OrderController extends Controller
 
             if ($date === null)
                 $date = Carbon::now();
-            else
-                $date = new Carbon("10.12.2020 16:12:18");
 
             // Creating new Order
             $order = new Order();
@@ -177,6 +86,7 @@ class OrderController extends Controller
                     'products' => 'required|array',
                     'products.*.product_id' => 'required|integer',
                     'products.*.quantity' => 'required|numeric|min:1',
+                    'products.*.netPrice' => 'required|numeric|min:0'
                 ]
             );
 
@@ -192,24 +102,24 @@ class OrderController extends Controller
                     $validator = Validator::make($product, [
                         'product_id' => 'required|integer',
                         'name' => 'required|string',
-                        'price' => 'required|numeric|between:0,99999999.99',
-                        'description' => 'required|string',
+                        'vatRate' => 'required|numeric|min:1',
+                        'measureUnit' => 'required|string',
                         'isService' => 'required|boolean'
                     ]);
-
                     $productDB = $productDB->create($validator->validate());
                 }
-                $orderDetails = ['quantity' => $product['quantity'], 'discountedPrice' => isset($product['discountedPrice']) ? $product['discountedPrice'] : null];
+                $orderDetails = ['quantity' => $product['quantity'], 'netPrice' => $product['netPrice']];
 
-                $details = ['quantity' => $product['quantity'], 'discountedPrice' => isset($product['discountedPrice']) ? $product['discountedPrice'] : null];
+                $details = ['quantity' => $product['quantity'], 'netPrice' => $product['netPrice']];
 
                 $order->products()->attach($productDB->id, $details);
             }
 
             DB::commit();
-            return response()->json(['created' => $order->load(['customer', 'products'])], 201);
+            return response()->json($order, 201);
         } catch (PDOException $e) {
-            return response()->json(['errors' => ['title' => "Database connection problem", 'detail' => $e->getMessage()]], 500);
+            DB::rollback();
+            return response()->json(['errors' => ['title' => "Database problem", 'detail' => $e->getMessage()]], 500);
         } catch (ValidationException $e) {
             DB::rollback();
             return response()->json(['errors' => ['title' => $e->getMessage(), 'detail' => $e->errors()]], 422);
@@ -219,12 +129,75 @@ class OrderController extends Controller
         }
     }
 
-    //remove order
-    public function removeOrder($id)
+    public function deleteOrder($id)
     {
-        $order = Order::find($id);
-        $order->delete();
-        return response()->json(['deleted' => $order], 200);
+        try {
+            $order = Order::findOrFail($id);
+            $order->delete();
+            return response()->json(['deleted' => $order], 200);
+        } catch (PDOException $e) {
+            return response()->json(['errors' => ['title' => "Database problem", 'detail' => $e->getMessage()]], 500);
+        } catch (Exception $e) {
+            return response()->json(['error' =>  $e->getMessage()], 500);
+        }
+    }
+
+    public function putUpdateOrder(Request $request, $id)
+    {
+        try {
+            DB::beginTransaction();
+            $order = Order::find($id)->first();
+            if ($order === null)
+                return response()->json(['errors' => ['title' => 'Invalid order id', 'detail' => 'Order identified by id: "' . $id . '" doesn\'t exist in database.']], 422);
+
+            // validating products required data
+            $productRequired = $request->validate(
+                [
+                    'products' => 'required|array',
+                    'products.*.product_id' => 'required|integer',
+                    'products.*.quantity' => 'required|numeric|min:1',
+                    'products.*.netPrice' => 'required|numeric|min:0',
+                    'status_id' => 'exists:order_status,id'
+                ]
+            );
+
+            //removing all products associated with order
+            $order->products()->detach();
+            $order->status_id = $request['status_id'];
+
+            foreach ($request['products'] as $product) {
+
+                $productDB = Product::where('product_id', $product['product_id'])->first();
+
+                // create product if does not exists
+                // we don't need to give additional information about product if he exists in database
+                if ($productDB === null) {
+                    $productDB = new Product();
+
+                    $validator = Validator::make($product, [
+                        'product_id' => 'required|integer',
+                        'name' => 'required|string',
+                        'vatRate' => 'required|numeric|min:1',
+                        'measureUnit' => 'required|string',
+                        'isService' => 'required|boolean',
+                    ]);
+                    $productDB = $productDB->create($validator->validate());
+                }
+                $orderDetails = ['quantity' => $product['quantity'], 'netPrice' => $product['netPrice']];
+
+                $details = ['quantity' => $product['quantity'], 'netPrice' => $product['netPrice']];
+
+                $order->products()->attach($productDB->id, $details);
+            }
+
+            $order->save();
+            return response()->json(['updated' => $order->load(['customer', 'products'])], 200);
+        } catch (PDOException $e) {
+            DB::rollback();
+            return response()->json(['errors' => ['title' => "Database problem", 'detail' => $e->getMessage()]], 500);
+        } catch (Exception $e) {
+            return response()->json(['error' =>  $e->getMessage()], 500);
+        }
     }
 
     private function generateOrderName($carbonDate)

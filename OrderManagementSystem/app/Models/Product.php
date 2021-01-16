@@ -10,14 +10,15 @@ class Product extends Model
     use HasFactory;
 
     public $table = 'products';
-    
+
     public $timestamps = false;
 
     protected $fillable = [
         'product_id',
         'name',
-        'price',
-        'description',
+        // 'price', moved to pivot table (Not every customer have same price, vatRate stays same for product)
+        'vatRate',
+        'measureUnit',
         'isService'
     ];
 
