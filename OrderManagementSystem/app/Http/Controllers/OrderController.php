@@ -146,7 +146,7 @@ class OrderController extends Controller
     {
         try {
             DB::beginTransaction();
-            $order = Order::find($id)->first();
+            $order = Order::findOrFail($id);
             if ($order === null)
                 return response()->json(['errors' => ['title' => 'Invalid order id', 'detail' => 'Order identified by id: "' . $id . '" doesn\'t exist in database.']], 422);
 
@@ -191,6 +191,7 @@ class OrderController extends Controller
             }
 
             $order->save();
+            DB::commit();
             return response()->json(['updated' => $order->load(['customer', 'products'])], 200);
         } catch (PDOException $e) {
             DB::rollback();
