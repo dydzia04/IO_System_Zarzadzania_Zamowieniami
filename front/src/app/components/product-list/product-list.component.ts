@@ -1,10 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import IProduct from '../../interface/IProduct';
 import {Subscription} from 'rxjs';
-import {FormControl} from '@angular/forms';
 import {ApiService} from '../../services/api.service';
-import {FilterService} from '../../services/filter.service';
-
 import {faShoppingCart} from '@fortawesome/free-solid-svg-icons';
 import {CartService} from '../../services/cart.service';
 
@@ -18,21 +15,19 @@ export class ProductListComponent implements OnInit, OnDestroy {
   faShoppingCart = faShoppingCart;
   productList$: Subscription;
   productList: Array<IProduct>;
-  searchString: FormControl;
+  searchString: string;
 
   constructor(
     private api: ApiService,
-    private filter: FilterService,
     private cart: CartService,
   ) {
     this.productList$ = new Subscription();
     this.productList = new Array<IProduct>();
-    this.searchString = new FormControl('');
+    this.searchString = '';
   }
 
   ngOnInit(): void {
-    this.api.setFilterableListOfProducts();
-    this.productList$ = this.filter.listOfProducts.subscribe( (data: Array<IProduct>) => {
+    this.productList$ = this.api.getProductsFromAPI().subscribe( (data: Array<IProduct>) => {
       this.productList = data;
     });
   }
@@ -41,7 +36,18 @@ export class ProductListComponent implements OnInit, OnDestroy {
   }
 
   addObjectToCart( objectID: number ): void{
-    const product = this.filter.getProductByID(objectID);
+    let product: IProduct = {
+      id: 0,
+      isService: 0,
+      measureUnit: '',
+      name: '',
+      pivot: {netPrice: 0, order_id: 0, product_id: 0, quantity: 0},
+      product_id: 0,
+      vatRate: 0
+    };
+    this.api.getProductByID(objectID).subscribe(data => {
+      product = data;
+    });
     this.cart.addToCart(product);
   }
 }

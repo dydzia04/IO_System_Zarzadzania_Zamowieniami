@@ -1,41 +1,45 @@
-import { Component, OnInit } from '@angular/core';
-import { ApiService } from '../../services/api.service';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {ApiService} from '../../services/api.service';
 import ICustomer from '../../interface/ICustomer';
-import { FormControl } from '@angular/forms';
-import { FilterService } from '../../services/filter.service';
-import { Observable, Subscriber, Subscription } from 'rxjs';
-import {faCheckCircle} from '@fortawesome/free-solid-svg-icons';
+import {Subscription} from 'rxjs';
+import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
-    selector: 'app-customer-list',
-    templateUrl: './customer-list.component.html',
-    styleUrls: ['./customer-list.component.css']
+  selector: 'app-customer-list',
+  templateUrl: './customer-list.component.html',
+  styleUrls: ['./customer-list.component.css']
 })
-export class CustomerListComponent implements OnInit {
-    faCheckCircle = faCheckCircle;
+export class CustomerListComponent implements OnInit, OnDestroy {
 
-    customerList$: Subscription;
-    customerList: Array<ICustomer>;
-    searchString: FormControl;
+  faInfoCircle = faInfoCircle;
 
-    constructor(
-        private api: ApiService,
-        private filter: FilterService,
-    ) {
-        this.customerList$ = new Subscription();
-        this.customerList = [];
-        this.searchString = new FormControl('');
-    }
+  customerList$: Subscription;
+  customerList: Array<ICustomer>;
+  inputNip: string;
+  isNipValid: boolean;
 
-    ngOnInit(): void {
-        this.api.setFilterableListOfCustomers();
-        this.customerList$ = this.filter.listOfCustomers.subscribe((data: Array<ICustomer>) => {
-            this.customerList = data;
-        });
-    }
+  constructor(
+    private api: ApiService,
+  ) {
+    this.customerList = [];
+    this.customerList$ = this.api.getCustomers().subscribe( customers => {
+      this.customerList = customers;
+    });
+    this.inputNip = '';
+    this.isNipValid = false;
+  }
 
-    ngOnDestroy(): void {
-        this.customerList$.unsubscribe();
-    }
+  ngOnInit(): void {
+  }
 
+  ngOnDestroy(): void {
+    this.customerList$.unsubscribe();
+  }
+
+  isNIPValid(): void {
+    let nipToCheck = this.inputNip.replace('-', '');
+    nipToCheck = nipToCheck.replace(' ', '');
+
+    this.isNipValid = nipToCheck.length === 10;
+  }
 }

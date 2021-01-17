@@ -6,31 +6,31 @@
         </p>
         <div class="box_one">
             <p class="contrete-date">
-            NIP:
+            NIP: {{customer.NIP}}
         </p>
         <p class="contrete-date">
-            Nazwa firmy:
+            Nazwa firmy: {{customer.name}}
         </p>
         <p class="contrete-date">
-            Adres:
+            Adres: {{customer.address}}
         </p>
         </div>
-        <div class="box_two"> 
+        <div class="box_two">
             <div class="contact-title">
                 Dane kontaktowe:
             </div>
 
             <p class="contrete-date">
-                Imię:
+                Imię: {{customer.contact_name}}
             </p>
             <p class="contrete-date">
-                Nazwisko:
+                Nazwisko: {{customer.contact_surname}}
             </p>
             <p class="contrete-date">
-                Email:
+                Email: {{customer.email}}
             </p>
             <p class="contrete-date">
-                Telefon:
+                Telefon: {{customer.phone}}
             </p>
         </div>
 
@@ -41,31 +41,27 @@
                     Lp.
                 </p>
                 <p class="title_column">
-                    Nazwa zamówienia 
+                    Nazwa zamówienia
                 </p>
                 <p class="title_column">
                     Status
                 </p>
-
-                <p class="title_column">
-                    Kwota
-                </p>
-
+                <p></p>
             </div>
 
-        <div  class="product-order-list-item">
+        <div  class="product-order-list-item" *ngFor="let order of customer.orders; let i = index;">
             <p>
-                lp
+                {{i+1}}
             </p>
             <p>
-                nazwa zwmówienia
+                {{order.order_name}}
             </p>
             <p>
-                status
-            </p>   
-            <p>
-               kwota
-            </p>   
+                {{order.status.name}}
+            </p>
+            <p [routerLink]="['/', 'edit', order.id]">
+              <fa-icon [icon]="faInfoCircle" class="Order_List_Icon"></fa-icon>
+            </p>
         </div>
 
         </div>

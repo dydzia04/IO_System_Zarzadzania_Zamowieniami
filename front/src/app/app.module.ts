@@ -9,12 +9,18 @@ import { OrderEditComponent } from './components/order-edit/order-edit.component
 import { TopBarComponent } from './components/top-bar/top-bar.component';
 import { ProductListComponent } from './components/product-list/product-list.component';
 import { CartComponent } from './components/cart/cart.component';
-import {ReactiveFormsModule} from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
-import { OrderDetailsComponent} from './components/order-details/order-details.component';
 import { CustomerDetailsComponent } from './components/customer-details/customer-details.component';
+import { PriceNettoToBruttoPipe } from './pipes/price-netto-to-brutto.pipe';
+import { DatePipe } from '@angular/common';
+import { OrderListFilterPipe } from './pipes/order-list-filter.pipe';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import {CustomerListComponent} from './components/customer-list/customer-list.component';
+import { ProductListFilterPipe } from './pipes/product-list-filter.pipe';
 
 @NgModule({
   declarations: [
@@ -26,8 +32,11 @@ import { CustomerDetailsComponent } from './components/customer-details/customer
     ProductListComponent,
     CartComponent,
     ProductDetailsComponent,
-    OrderDetailsComponent,
-    CustomerDetailsComponent
+    CustomerDetailsComponent,
+    PriceNettoToBruttoPipe,
+    OrderListFilterPipe,
+    CustomerListComponent,
+    ProductListFilterPipe,
   ],
   imports: [
     BrowserModule,
@@ -35,8 +44,13 @@ import { CustomerDetailsComponent } from './components/customer-details/customer
     AppRoutingModule,
     ReactiveFormsModule,
     FontAwesomeModule,
+    FormsModule,
+    BrowserAnimationsModule,
+    MatSnackBarModule,
   ],
-  providers: [],
+  providers: [
+    DatePipe,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

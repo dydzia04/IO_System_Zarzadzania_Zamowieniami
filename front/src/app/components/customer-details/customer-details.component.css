@@ -42,14 +42,14 @@
 
 #wrapper {
     width: 100%;
-    overflow: hidden; 
+    overflow: hidden;
 }
 #first {
     width: 27%;
-    float:left; 
+    float:left;
 }
 #second {
-    float:right; 
+    float:right;
     width: 72.5%;
 }
 
@@ -58,18 +58,18 @@
 .product-order-list{
     width: 100%;
     margin: auto;
-    text-align: center; 
+    text-align: center;
   }
-  
+
 .product-order-search{
-    width: 100%; 
+    width: 100%;
    margin: 1em auto 1em auto;
    height: 2em;
    text-align: center;
    padding-bottom: 1.5em;
    padding-top: 1.5em;
   }
-  
+
 .searchInput{
    width: 60%;
    height: 2em;
@@ -78,7 +78,7 @@
    text-indent: 0.5em;
    background: rgb(90, 90, 90);
   }
-  
+
   .product-order-list-header,
   .product-order-list-item{
     display: grid;
@@ -97,18 +97,18 @@
     justify-content: center;
     align-items: center;
   }
-  
+
   .product-order-list-header{
     background-color:  rgb(58, 58, 58);
     font-weight: bold;
   }
-  
+
   .product-order-list-item:hover{
     background-color:  rgb(90, 90, 90);
     font-weight: bold;
     cursor: pointer;
   }
-  
+
   .title_column{
     text-align: center;
     color: rgb(252, 206, 0);
@@ -116,7 +116,7 @@
     font-weight: 600;
     cursor: default;
   }
-  
+
   .Product_List_Icon{
     cursor: pointer;
     color: rgb(252, 206, 0);
@@ -136,7 +136,7 @@
   .add_order{
     margin-left: 0.5em;
   }
-  
+
   .back:hover, .add_order:hover{
     background-color: rgb(255, 208, 0);
   }
@@ -149,4 +149,7 @@
     cursor: pointer;
   }
 
-  
+.Order_List_Icon{
+  cursor: pointer;
+  color: rgb(252, 206, 0);
+}

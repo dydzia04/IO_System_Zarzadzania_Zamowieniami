@@ -7,12 +7,12 @@
       </p>
 
       <p class="contrete-date">
-        NIP: 
+        NIP:
     </p>
     <p class="contrete-date">
-        Nazwa firmy: 
+        Nazwa firmy:
     </p>
-      <button routerLink="/customer-details" class="customer">       
+      <button routerLink="/customer-details" class="customer">
         Szczegóły kontrahenta
       </button>
 
@@ -38,16 +38,16 @@
           </p>
         </div>
       </div>
-     
+
       <div *ngFor="let product of cartArr; let i = index" class="cart-list-item">
         <p>
           {{ i+1 }}
         </p>
         <p>
-          {{product.nazwa_produktu}}
+          {{product.name}}
         </p>
         <p>
-          {{product.cena_netto}}
+          {{product.pivot.netPrice}}
         </p>
         <p>
          cena brutto
@@ -69,10 +69,10 @@
          <input type="date" id="date" name="date" class="input_style">
       </p>
       <p class="contrete-date">
-      Całkowita cena netto: 
+      Całkowita cena netto:
       </p>
       <p class="contrete-date">
-      Całkowita cena brutto:  
+      Całkowita cena brutto:
       </p>
 
       <button routerLink="/product-list/" class="back">

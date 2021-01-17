@@ -1,8 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ApiService } from '../../services/api.service';
 import IGetOrder from '../../interface/IGetOrder';
-import { FormControl } from '@angular/forms';
-import { FilterService } from '../../services/filter.service';
 import { Subscription } from 'rxjs';
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
@@ -17,22 +15,19 @@ export class OrdersListComponent implements OnInit, OnDestroy {
   faInfoCircle = faInfoCircle;
 
   orderList$: Subscription;
-  orderList: Array<IGetOrder>;
-  searchString: FormControl;
+  orderList: IGetOrder[];
+  searchString: string;
 
   constructor(
     private api: ApiService,
-    private filter: FilterService,
   ) {
     this.orderList$ = new Subscription();
     this.orderList = [];
-    this.searchString = new FormControl('');
+    this.searchString = '';
   }
 
   ngOnInit(): void {
-    // this.api.setFilterableListOfOrders();
-    this.api.getOrdersFromAPI();
-    this.orderList$ = this.filter.listOfOrders.subscribe((data: Array<IGetOrder>) => {
+    this.orderList$ = this.api.getOrdersFromAPI().subscribe((data: Array<IGetOrder>) => {
       this.orderList = data;
     });
   }
@@ -41,14 +36,11 @@ export class OrdersListComponent implements OnInit, OnDestroy {
     this.orderList$.unsubscribe();
   }
 
-  deleteOrderByID( event: Event, id: number ): void {
-    console.log(event);
-    event.preventDefault;
-    this.api.deleteOrder(id);
-    this.api.getOrdersFromAPI();
-    this.orderList$ = this.filter.listOfOrders.subscribe((data: Array<IGetOrder>) => {
-      this.orderList = data;
+  deleteOrderByID( id: number ): void {
+    this.api.deleteOrder(id).subscribe(data => {
+      console.log(data);
     });
+    this.orderList$ = this.api.getOrdersFromAPI().subscribe();
   }
 
 }

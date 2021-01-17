@@ -1,51 +1,39 @@
 <div class="customer-search">
-    <div class="container">
-        <div class="row justify-content-center" style="color:white;">
-             <!-- <div class="col-9"><input type="text" [formControl]="searchString" class="searchInput"></div>  -->
-            tu będzie searchInput
-            <!--searchInput nie działa bo chyba coś źle zrobiłem w customer-list.component.ts 
-                    w sensie pokazuje się na stronce ale jest komunikat     Can't bind to 'formControl' since it isn't a known property of 'input'. 
-            -->
-            <!-- nie wiem czy dobrze zrobiłem customer-list.component.ts także lepiej sprawdzić, ja zrobiłem na podstawie orders-list  -->
-            <button routerLink="/" class="create-order" disabled>
-                
-                Dodaj zamówienie
-              </button>
-        </div>
+  <div class="container">
+    <div class="search-bar-with-add-order" style="color:white;">
+      <input type="text" [(ngModel)]="inputNip" (change)="isNIPValid()" class="searchInput">
+      <button routerLink="/" class="create-order" [disabled]="isNipValid">Dodaj zamówienie</button>
     </div>
+  </div>
 </div>
 
 
-
 <div class="customer-list">
-    <div class="customer-list-header">
-        <p class="title-column">
-            Lp.
-        </p>
-        <p class="title-column">
-            NIP
-        </p>
-        <p class="title-column">
-            Nazwa
-        </p>
-       
-       
-
-    </div>
-    <!-- <div *ngFor="let product of productList; let i = index" class="customer-list-item"> -->
-    <div class="customer-list-item">
-        <p>
-            <!-- {{i+1}} -->
-            1
-        </p>
-        <p>
-            
-            NIP
-        </p>
-        <p>
-           
-            Nazwa firmy
-        </p>
-        
-    </div>
+  <div class="customer-list-header">
+    <p class="title-column">
+      Lp.
+    </p>
+    <p class="title-column">
+      NIP
+    </p>
+    <p class="title-column">
+      Nazwa
+    </p>
+    <p class="title-column">
+    </p>
+  </div>
+  <div *ngFor="let customer of customerList; let i = index" class="customer-list-item">
+    <p>
+       {{i+1}}
+    </p>
+    <p>
+      {{customer.NIP}}
+    </p>
+    <p>
+      {{customer.name}}
+    </p>
+    <p>
+      <fa-icon [routerLink]="['/', 'customer-details', customer.NIP]" [icon]="faInfoCircle" class="Order_List_Icon"></fa-icon>
+    </p>
+  </div>
 </div>

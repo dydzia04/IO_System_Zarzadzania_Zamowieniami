@@ -10,28 +10,15 @@
                 <p class="contrete-date">
                     Nazwa firmy: {{order.customer.name}}
                 </p>
-                <!-- <p class="contrete-date">
-                    Imię: {{order.customer.contact_name}}
-                </p>
-                <p class="contrete-date">
-                    Nazwisko: {{order.customer.contact_surname}}
-                </p>
-
-                <p class="contrete-date">
-                    Email: {{order.customer.email}}
-                </p>
-                <p class="contrete-date">
-                    Telefon: {{order.customer.phone}}
-                </p> -->
                 <p class="contrete-date">
                     Stworzony: {{dateCreated}}
                 </p>
                 <p class="contrete-date">
                     Edytowany: {{dateModified}}
                 </p>
-               
 
-                <button routerLink="/customer-details" class="detailscustomer">
+
+                <button [routerLink]="['/', 'customer-details', order.customer.NIP]" class="detailscustomer">
                     Szczegóły kontrahenta
                 </button>
                 <br/>
@@ -64,20 +51,20 @@
                             {{product.name}}
                         </p>
                         <p>
-                            {{product.price}}
+                            {{product.pivot.netPrice}}
                         </p>
                         <p>
-                            brutto
+                            {{product.pivot.netPrice | priceNettoToBrutto: product.vatRate}}
                         </p>
                         <p>
-                            <fa-icon [icon]="faPlusCircle" (click)="increaseProductQuantity(product.productID)" class="Product_List_Icon"></fa-icon> 
-                            {{product.quantity}}
-                            <fa-icon [icon]="faMinusCircle" (click)="decreaseProductQuantity(product.productID)" class="Product_List_Icon"></fa-icon>
+                            <fa-icon [icon]="faPlusCircle" (click)="increaseProductQuantity(i)" class="Product_List_Icon"></fa-icon>
+                            {{product.pivot.quantity}}
+                            <fa-icon [icon]="faMinusCircle" (click)="decreaseProductQuantity(i)" class="Product_List_Icon"></fa-icon>
                         </p>
                         <p>
-                            <fa-icon [icon]="faTrashAlt" (click)="deleteProduct(product.productID)" class="Product_List_Icon"></fa-icon>
+                            <fa-icon [icon]="faTrashAlt" (click)="deleteProduct(i)" class="Product_List_Icon"></fa-icon>
                         </p>
-                        
+
                     </div>
                 </div>
                 <button routerLink="/product-list" class="save">
@@ -85,19 +72,16 @@
                 </button>
         <div class="Edit-panel">
             <p class="contrete-date">
-                Nowa data utworzenia:
-                 <input type="date" id="date" name="date" class="input_style" (change)="setDateOfCreation($event)">
-            </p>
-            <p class="contrete-date">
                 Status:
-                 <select name="order-status" id="order-status" class="input_style" #statusSelect>
+                 <select name="order-status" id="order-status" class="input_style" [(ngModel)]="order.status_id" >
+                   <option *ngFor="let status of statuses" [ngValue]="status.id">{{status.name}}</option>
                   </select>
             </p>
             <p class="contrete-date">
-                Całkowita cena netto: 
+                Całkowita cena netto: {{fullNettoPriceStr}} zł
                 </p>
                 <p class="contrete-date">
-                Całkowita cena brutto:  
+                Całkowita cena brutto: {{fullBruttoPriceStr}} zł
                 </p>
             <button routerLink="/" class="back">
                 <fa-icon [icon]="faArrowLeft"></fa-icon> Powrót
@@ -105,5 +89,7 @@
               <button (click)="saveModifiedOrder()" class="save">
                 <fa-icon [icon]="faCheckCircle"></fa-icon> Zapisz
               </button>
-             
+
         </div>
+    </div>
+</div>

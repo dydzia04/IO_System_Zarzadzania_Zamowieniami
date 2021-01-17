@@ -2,23 +2,23 @@
   <div class="product-board">
     <div class="product-info">
       <p class="product-details-title"><fa-icon [icon]="faCogs" class="Product_Details"></fa-icon> Szczegóły produktu: </p>
-      <p class="product">Id produktu: 
+      <p class="product">Id produktu:
         <span class="contrete-info">{{product.id}}</span>
       </p>
       <p class="product">Nazwa:
-        <span class="contrete-info">{{product.nazwa_produktu}}</span>
+        <span class="contrete-info">{{product.name}}</span>
       </p>
-      <p class="product">Cena: 
-        <span class="contrete-info">{{product.cena_netto}}</span>
+      <p class="product">Cena:
+        <span class="contrete-info">{{product.pivot.netPrice}}</span>
       </p>
-      <p class="product">Vat: 
-        <span class="contrete-info">VAT</span>
+      <p class="product">Vat:
+        <span class="contrete-info">{{product.vatRate}}</span>
       </p>
-      <p class="product">Opis: 
-        <span class="contrete-info">{{product.opis}}</span>
+      <p class="product">Jednostka miary:
+        <span class="contrete-info">{{product.measureUnit}}</span>
       </p>
-      <p class="product">Czy jest usługą: 
-        <span class="contrete-info">{{product.czy_usluga ? 'tak' : 'nie'}}</span>
+      <p class="product">Czy jest usługą:
+        <span class="contrete-info">{{product.isService ? 'tak' : 'nie'}}</span>
       </p>
       <button routerLink="/product-list/" class="back">
         <fa-icon [icon]="faArrowLeft"></fa-icon> Powrót
