@@ -32,7 +32,7 @@ class OrderController extends Controller
     {
         try {
             $order = Order::findOrFail($id);
-            $order = $order->with('customer:id,NIP,name')->first()->load(['status', 'products']);
+            $order = $order->load(['customer:id,NIP,name', 'status', 'products']);
             return response()->json($order, 200);
         } catch (Exception $e) {
             return response()->json(['error' =>  $e->getMessage()], 500);
