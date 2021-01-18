@@ -21,6 +21,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import {CustomerListComponent} from './components/customer-list/customer-list.component';
 import { ProductListFilterPipe } from './pipes/product-list-filter.pipe';
+import { CustomerListFilterPipe } from './pipes/customer-list-filter.pipe';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { ProductListFilterPipe } from './pipes/product-list-filter.pipe';
     OrderListFilterPipe,
     CustomerListComponent,
     ProductListFilterPipe,
+    CustomerListFilterPipe,
   ],
   imports: [
     BrowserModule,

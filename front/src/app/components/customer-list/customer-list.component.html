@@ -2,7 +2,6 @@
   <div class="container">
     <div class="search-bar-with-add-order" style="color:white;">
       <input type="text" [(ngModel)]="inputNip" (change)="isNIPValid()" class="searchInput">
-      <button routerLink="/" class="create-order" [disabled]="isNipValid">Dodaj zamówienie</button>
     </div>
   </div>
 </div>
@@ -22,7 +21,7 @@
     <p class="title-column">
     </p>
   </div>
-  <div *ngFor="let customer of customerList; let i = index" class="customer-list-item">
+  <div *ngFor="let customer of customerList | customerListFilter: inputNip ; let i = index" class="customer-list-item">
     <p>
        {{i+1}}
     </p>
