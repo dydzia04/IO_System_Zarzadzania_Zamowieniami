@@ -8,10 +8,13 @@
 
       <p class="contrete-date">
         NIP:
-    </p>
-    <p class="contrete-date">
+      </p>
+      <p class="contrete-date">
         Nazwa firmy:
-    </p>
+      </p>
+      <button (click)="selectCustomerForOrder()">
+        Wybierz kontrahenta
+      </button>
       <button routerLink="/customer-details" class="customer">
         Szczegóły kontrahenta
       </button>
@@ -41,7 +44,7 @@
 
       <div *ngFor="let product of cartArr; let i = index" class="cart-list-item">
         <p>
-          {{ i+1 }}
+          {{ i + 1 }}
         </p>
         <p>
           {{product.name}}
@@ -50,7 +53,7 @@
           {{product.pivot.netPrice}}
         </p>
         <p>
-         cena brutto
+          cena brutto
         </p>
         <!--  TODO: Podpiąć linki do routów i je zmienić -->
         <p>
@@ -66,13 +69,13 @@
 
       <p class="contrete-date">
         Nowa data utworzenia:
-         <input type="date" id="date" name="date" class="input_style">
+        <input type="date" id="date" name="date" class="input_style">
       </p>
       <p class="contrete-date">
-      Całkowita cena netto:
+        Całkowita cena netto:
       </p>
       <p class="contrete-date">
-      Całkowita cena brutto:
+        Całkowita cena brutto:
       </p>
 
       <button routerLink="/product-list/" class="back">

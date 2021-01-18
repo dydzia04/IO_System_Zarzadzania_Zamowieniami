@@ -50,4 +50,6 @@ export class CartComponent implements OnInit, OnDestroy {
   decreaseQuantity(i: number): void {
     this.quantities[i].quantity--;
   }
+
+  selectCustomerForOrder() {}
 }
