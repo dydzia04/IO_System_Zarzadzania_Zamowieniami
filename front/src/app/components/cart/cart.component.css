@@ -29,7 +29,7 @@
 
 .submit-order{
     margin-top: 1em;
-    background-color: rgb(209, 171, 0); 
+    background-color: rgb(209, 171, 0);
     color: black;
     border: 2px solid black;
     padding: 0.3em;
@@ -39,10 +39,10 @@
   .submit-order:hover{
     background-color: rgb(255, 208, 0);
   }
-  
+
   .back{
     margin-top: 1em;
-    background-color: rgb(209, 171, 0); 
+    background-color: rgb(209, 171, 0);
     color: black;
     border: 2px solid black;
     padding: 0.3em;
@@ -50,11 +50,11 @@
     font-size: 1.4em;
     margin-right: 0.4em;
   }
-  
+
   .back:hover{
     background-color: rgb(255, 208, 0);
   }
-  
+
   .title-column{
       text-align: center;
       color: rgb(252, 206, 0);
@@ -62,7 +62,7 @@
       font-weight: 600;
       cursor: default;
     }
-  
+
   .cart-list-header,
   .cart-list-item{
     display: grid;
@@ -108,13 +108,14 @@
   }
 
   .customer{
-    background-color: rgb(209, 171, 0); 
+    background-color: rgb(209, 171, 0);
     color: black;
     border: 2px solid black;
     padding: 0.3em;
     cursor: pointer;
     font-size: 1.4em;
     margin-bottom: 1em;
+    margin-right: 1em;
   }
   .customer:hover{
     background-color: rgb(255, 208, 0);

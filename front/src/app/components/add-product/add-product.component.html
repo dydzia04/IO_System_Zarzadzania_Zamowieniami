@@ -1,0 +1,20 @@
+<div>
+  <input [(ngModel)]="searchString">
+  <div *ngFor="let product of productList | productListFilter: searchString; let i = index" (click)="addItemToCart(product)" class="product-list-item">
+    <p>
+      {{i + 1}}
+    </p>
+    <p>
+      {{product.name}}
+    </p>
+    <p>
+      {{product.pivot.netPrice}}
+    </p>
+    <p>
+      {{product.vatRate}}
+    </p>
+    <p>
+      {{product.measureUnit}}
+    </p>
+  </div>
+</div>

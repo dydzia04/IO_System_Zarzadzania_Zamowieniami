@@ -5,7 +5,8 @@ import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 import { ApiService } from '../../services/api.service';
 import { Subscription } from 'rxjs';
 import ICustomer from '../../interface/ICustomer';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
+import {CartService} from '../../services/cart.service';
 
 @Component({
   selector: 'app-customer-details',
@@ -24,6 +25,8 @@ export class CustomerDetailsComponent implements OnInit {
   constructor(
     private api: ApiService,
     private route: ActivatedRoute,
+    private cart: CartService,
+    private router: Router,
   ) {
     this.customer = {
       orders: [],
@@ -46,4 +49,8 @@ export class CustomerDetailsComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  addCustomer(): void {
+    this.cart.customer = this.customer;
+    this.router.navigateByUrl('/cart');
+  }
 }

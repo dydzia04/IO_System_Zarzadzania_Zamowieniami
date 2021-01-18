@@ -7,12 +7,16 @@ import IStatus from '../interface/IStatus';
 import IPostOrder from '../interface/IPostOrder';
 import IDeletedOrder from '../interface/IDeletedOrder';
 import IProduct from '../interface/IProduct';
+import IPostCustomer from '../interface/IPostCustomer';
+import IPostProduct from '../interface/IPostProduct';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
-  private BASE = 'http://127.0.0.1:4040/api';
+  private PORT = '8000';
+  // private PORT = '4040';
+  private BASE = `http://127.0.0.1:${this.PORT}/api`;
   private BASE_PRODUCTS = '';
   private BASE_CLIENTS = '';
   private ORDERS = '/orders';
@@ -59,5 +63,15 @@ export class ApiService {
 
   getCustomers(): Observable<ICustomer[]> {
     return this.http.get( this.BASE + this.CUSTOMERS ) as Observable<ICustomer[]>;
+  }
+
+  createOrder(customerParam: IPostCustomer, cart: IPostProduct[]): Observable<any> {
+    console.log(customerParam);
+    console.log(cart);
+    return this.http.post( this.BASE + this.ORDERS ,
+      {
+        customer: customerParam,
+        products: cart
+      });
   }
 }

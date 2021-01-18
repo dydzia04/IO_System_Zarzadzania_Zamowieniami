@@ -13,6 +13,8 @@ import IStatus from 'src/app/interface/IStatus';
 import IProduct from '../../interface/IProduct';
 import IPostOrder from '../../interface/IPostOrder';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import {MatDialog} from '@angular/material/dialog';
+import {AddProductComponent} from '../add-product/add-product.component';
 
 @Component({
   selector: 'app-order-edit',
@@ -43,6 +45,7 @@ export class OrderEditComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private api: ApiService,
     private snackBar: MatSnackBar,
+    private dialog: MatDialog,
   ) {
     this.dateCreated = this.dateModified = '';
     this.fullBruttoPriceStr = '';
@@ -159,8 +162,11 @@ export class OrderEditComponent implements OnInit, OnDestroy {
     });
 
     this.api.updateOrder(this.order.id, orderToSent).subscribe( data => {
-      console.log(data);
       this.snackBar.open(`Zakutalizowano zamówienie`, 'OK' , {duration: 1000});
     });
+  }
+
+  addProduct(): void {
+    this.dialog.open(AddProductComponent);
   }
 }

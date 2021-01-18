@@ -69,7 +69,7 @@
         <button routerLink="/customer-list" class="back">
             <fa-icon [icon]="faArrowLeft"></fa-icon> Powrót
         </button>
-        <button routerLink="/" class="add_order">
+        <button (click)="addCustomer()" class="add_order">
             <fa-icon [icon]="faPlusCircle"></fa-icon> Dodaj zamowienie
         </button>
     </div>
