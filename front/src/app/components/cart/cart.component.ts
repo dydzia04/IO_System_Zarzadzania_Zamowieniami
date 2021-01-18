@@ -24,12 +24,14 @@ export class CartComponent implements OnInit, OnDestroy {
 
   cartArr: Array<IProduct>;
   quantities: Array<{ id: number; quantity: number; }>;
+  creationDate: string;
 
   constructor(
     private cart: CartService,
   ) {
     this.cartArr = [...this.cart.cart];
     this.quantities = [...this.cart.quantityOfProducts];
+    this.creationDate = new Date( Date.now() ).toISOString().split('T')[0];
   }
 
   ngOnInit(): void {
@@ -51,5 +53,5 @@ export class CartComponent implements OnInit, OnDestroy {
     this.quantities[i].quantity--;
   }
 
-  selectCustomerForOrder() {}
+  selectCustomerForOrder(): void {}
 }

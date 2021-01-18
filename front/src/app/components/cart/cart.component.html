@@ -12,7 +12,7 @@
       <p class="contrete-date">
         Nazwa firmy:
       </p>
-      <button (click)="selectCustomerForOrder()">
+      <button (click)="selectCustomerForOrder()" class="customer">
         Wybierz kontrahenta
       </button>
       <button routerLink="/customer-details" class="customer">
@@ -69,7 +69,7 @@
 
       <p class="contrete-date">
         Nowa data utworzenia:
-        <input type="date" id="date" name="date" class="input_style">
+        <input type="date" id="date" name="date" [(ngModel)]="creationDate" class="input_style">
       </p>
       <p class="contrete-date">
         Całkowita cena netto:
