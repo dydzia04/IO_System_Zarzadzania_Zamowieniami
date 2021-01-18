@@ -6,7 +6,7 @@ import ICustomer from '../interface/ICustomer';
 })
 export class CustomerListFilterPipe implements PipeTransform {
 
-  transform(items: ICustomer[], search: string): unknown {
+  transform(items: ICustomer[], search: string): ICustomer[] {
     if (!items) { return []; }
 
     if (!search) { return items; }
