@@ -12,7 +12,7 @@ import IProduct from '../interface/IProduct';
   providedIn: 'root'
 })
 export class ApiService {
-  private BASE = 'http://127.0.0.1:8000/api';
+  private BASE = 'http://127.0.0.1:4040/api';
   private BASE_PRODUCTS = '';
   private BASE_CLIENTS = '';
   private ORDERS = '/orders';
