@@ -1,0 +1,71 @@
+version: '3.8'
+
+networks:
+  Order_Management_System:
+
+services:
+  mysql:
+    image: mysql
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'ordermanagementsystem'
+      MYSQL_USER: 'ordermanagementsystem'
+      MYSQL_PASSWORD: 'ordermanagementsystem'
+      # Password for root access
+      MYSQL_ROOT_PASSWORD: 'password'
+    ports:
+      - '3306:3306'
+    expose: 
+      - '3306'
+    networks: 
+      - Order_Management_System
+
+  phpymadmin:
+    depends_on:
+      - mysql
+    image: phpmyadmin/phpmyadmin
+    restart: always
+    ports:
+      - '1000:80'
+    environment:
+      PMA_HOST: mysql
+      MYSQL_ROOT_PASSWORD: password 
+    networks: 
+      - Order_Management_System
+      
+
+
+#https://buddy.works/guides/laravel-in-docker
+
+  laravel:
+    container_name: laravel_backend
+    depends_on:
+      - mysql
+    restart: always
+    build: 
+      context: ./OrderManagementSystem
+      dockerfile: Dockerfile
+    ports: 
+      - "4040:8000"
+    expose: 
+      - 4040
+    networks: 
+      - Order_Management_System
+    volumes: 
+      - './OrderManagementSystem:/test/app'
+
+  angular_frontend:
+    container_name: angular_frontend
+    depends_on:
+      - laravel
+    restart: always
+    build:
+      context: ./front
+      dockerfile: Dockerfile
+    ports: 
+      - "8080:4200"
+    networks: 
+      - Order_Management_System
+    volumes: 
+      - './front:/app'
+#CREATE USER 'ordermanagementsystem'@'%' IDENTIFIED WITH caching_sha2_password BY '***';GRANT USAGE ON *.* TO 'ordermanagementsystem'@'%';ALTER USER 'ordermanagementsystem'@'%' REQUIRE NONE WITH MAX_QUERIES_PER_HOUR 0 MAX_CONNECTIONS_PER_HOUR 0 MAX_UPDATES_PER_HOUR 0 MAX_USER_CONNECTIONS 0;CREATE DATABASE IF NOT EXISTS `ordermanagementsystem`;GRANT ALL PRIVILEGES ON `ordermanagementsystem`.* TO 'ordermanagementsystem'@'%';GRANT ALL PRIVILEGES ON `ordermanagementsystem\_%`.* TO 'ordermanagementsystem'@'%';
