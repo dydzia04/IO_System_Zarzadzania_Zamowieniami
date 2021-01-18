@@ -37,10 +37,10 @@ export class OrdersListComponent implements OnInit, OnDestroy {
   }
 
   deleteOrderByID( id: number ): void {
-    this.api.deleteOrder(id).subscribe(data => {
-      console.log(data);
+    this.api.deleteOrder(id).subscribe();
+    this.orderList$ = this.api.getOrdersFromAPI().subscribe( orders => {
+      this.orderList = orders;
     });
-    this.orderList$ = this.api.getOrdersFromAPI().subscribe();
   }
 
 }

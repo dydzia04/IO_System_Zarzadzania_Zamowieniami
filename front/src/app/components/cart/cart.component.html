@@ -7,12 +7,12 @@
       </p>
 
       <p class="contrete-date">
-        NIP:
+        NIP: {{cartService.customer.NIP}}
       </p>
       <p class="contrete-date">
-        Nazwa firmy:
+        Nazwa firmy: {{cartService.customer.name}}
       </p>
-      <button (click)="selectCustomerForOrder()" class="customer">
+      <button (click)="selectCustomer()" class="customer">
         Wybierz kontrahenta
       </button>
       <button routerLink="/customer-details" class="customer">
@@ -42,7 +42,7 @@
         </div>
       </div>
 
-      <div *ngFor="let product of cartArr; let i = index" class="cart-list-item">
+      <div *ngFor="let product of cartService.cart; let i = index" class="cart-list-item">
         <p>
           {{ i + 1 }}
         </p>
@@ -53,13 +53,12 @@
           {{product.pivot.netPrice}}
         </p>
         <p>
-          cena brutto
+          {{(product.pivot.netPrice * product.vatRate).toFixed(2)}}
         </p>
-        <!--  TODO: Podpiąć linki do routów i je zmienić -->
         <p>
-          <fa-icon (click)="increaseQuantity(i)" [icon]="faPlusCircle" class="Product_List_Icon"></fa-icon>
-          {{ quantities[i].quantity }}
-          <fa-icon (click)="decreaseQuantity(i)" [icon]="faMinusCircle" class="Product_List_Icon"></fa-icon>
+          <fa-icon (click)="increaseQuantity(product)" [icon]="faPlusCircle" class="Product_List_Icon"></fa-icon>
+          {{ product.pivot.quantity }}
+          <fa-icon (click)="decreaseQuantity(product)" [icon]="faMinusCircle" class="Product_List_Icon"></fa-icon>
         </p>
         <p>
           <fa-icon (click)="removeFromCart(product.id)" [icon]="faTrashAlt" class="Product_List_Icon"></fa-icon>
@@ -67,10 +66,10 @@
 
       </div>
 
-      <p class="contrete-date">
-        Nowa data utworzenia:
-        <input type="date" id="date" name="date" [(ngModel)]="creationDate" class="input_style">
-      </p>
+<!--      <p class="contrete-date">-->
+<!--        Nowa data utworzenia:-->
+<!--        <input type="date" id="date" name="date" [(ngModel)]="creationDate" class="input_style">-->
+<!--      </p>-->
       <p class="contrete-date">
         Całkowita cena netto:
       </p>
@@ -82,7 +81,7 @@
         <fa-icon [icon]="faArrowLeft"></fa-icon>
         Anuluj
       </button>
-      <button routerLink="/add" class="submit-order">
+      <button *ngIf="cartService.customer.NIP !== ''" (click)="addOrder()" class="submit-order">
         <fa-icon [icon]="faCheckCircle"></fa-icon>
         Zamów
       </button>
@@ -90,3 +89,5 @@
   </div>
 
 </div>
+
+<router-outlet></router-outlet>

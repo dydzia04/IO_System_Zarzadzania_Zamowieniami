@@ -1,0 +1,17 @@
+.select-customer__list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  margin: 1em 0;
+  border-bottom: 1px solid gray;
+
+  cursor: pointer;
+}
+
+hr {
+  grid-column: 1/3;
+}
+
+p {
+  margin: 0;
+}

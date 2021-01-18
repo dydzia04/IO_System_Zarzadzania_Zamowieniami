@@ -1,47 +1,49 @@
 import {Injectable} from '@angular/core';
 import IProduct from '../interface/IProduct';
+import ICustomer from '../interface/ICustomer';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
-  private _cart: Set<IProduct>;
-  private _quantityOfProducts: Array<{ id: number; quantity: number; }>;
+  cart: Set<IProduct>;
+  customer: ICustomer;
 
   constructor() {
-    this._cart = new Set<IProduct>();
-    this._quantityOfProducts = [];
+    this.cart = new Set<IProduct>();
+    this.customer = {
+      NIP: '',
+      address: '',
+      contact_name: '',
+      contact_surname: '',
+      created_at: '',
+      email: '',
+      id: 0,
+      name: '',
+      orders: [],
+      phone: '',
+      updated_at: ''
+    };
+  }
 
-    this._cart.forEach( product => {
-      this._quantityOfProducts.push({
-        id: product.id,
-        quantity: 0,
+  addToCart(productToAdd: IProduct): void {
+    if (this.cart.has(productToAdd)) {
+      this.cart.forEach( product => {
+        if (product.id === productToAdd.id) {
+          product.pivot.quantity = productToAdd.pivot.quantity;
+        }
       });
-    });
-  }
-
-  get cart(): Set<IProduct> {
-    return this._cart;
-  }
-
-  set quantityOfProducts(value: Array<{ id: number; quantity: number }>) {
-    this._quantityOfProducts = value;
-  }
-  get quantityOfProducts(): Array<{ id: number; quantity: number }> {
-    return this._quantityOfProducts;
-  }
-
-  addToCart(product: IProduct): void {
-    // add check if product is in cart, if is then update
-    this._cart.add(product);
-    this._quantityOfProducts.push({
-      id: product.id,
-      quantity: 0,
-    });
+    }
+    else {
+      this.cart.add(productToAdd);
+    }
   }
 
   removeFromCart(id: number): void {
-    const product = [...this._cart].filter(object => object.id === id);
-    // this.cart.delete();
+    this.cart.forEach(object => {
+      if (object.id === id) {
+        this.cart.delete(object);
+      }
+    });
   }
 }

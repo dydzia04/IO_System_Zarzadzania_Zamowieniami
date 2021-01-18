@@ -1,0 +1,13 @@
+<div class="wrapper__select-customer">
+  <input [(ngModel)]="searchString">
+  <hr/>
+  <div *ngFor="let customer of customers | customerSelectFilter: searchString;" (click)="selectCustomer(customer)" class="select-customer__list">
+    <p>
+      {{customer.NIP}}
+    </p>
+    <p>
+      {{customer.name}}
+    </p>
+    <hr/>
+  </div>
+</div>

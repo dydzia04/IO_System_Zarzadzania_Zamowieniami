@@ -37,10 +37,10 @@
       {{product.pivot.netPrice}}
     </p>
     <p>
-      VAT
+      {{product.vatRate}}
     </p>
     <p>
-      KG
+      {{product.measureUnit}}
     </p>
     <p>
       <fa-icon (click)="addObjectToCart(product.id)" routerLink="/cart" [icon]="faShoppingCart" class="Product_List_Icon"></fa-icon>
