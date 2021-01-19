@@ -1,19 +1,19 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import IProduct from '../interface/IProduct';
+import IProductListFromProducts from '../interface/IProductListFromProducts';
 
 @Pipe({
   name: 'productListFilter'
 })
 export class ProductListFilterPipe implements PipeTransform {
 
-  transform(items: IProduct[], search: string): IProduct[] {
+  transform(items: IProductListFromProducts[], search: string): IProductListFromProducts[] {
     if (!items) { return []; }
 
     if (!search) { return items; }
 
     search = search.toLowerCase();
 
-    return items.filter( product => product.name.toLowerCase().includes(search));
+    return items.filter( product => product.nazwa_produktu.toLowerCase().includes(search));
   }
 
 }
