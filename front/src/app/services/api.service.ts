@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import IGetOrder from '../interface/IGetOrder';
 import ICustomer from '../interface/ICustomer';
+import IContractor from '../interface/IContractor';
 import {HttpClient} from '@angular/common/http';
 import { Observable } from 'rxjs';
 import IStatus from '../interface/IStatus';
@@ -17,8 +18,8 @@ export class ApiService {
   private PORT = '8000';
   // private PORT = '4040';
   private BASE = `http://127.0.0.1:${this.PORT}/api`;
-  private BASE_PRODUCTS = '';
-  private BASE_CLIENTS = '';
+  private BASE_PRODUCTS = 'https://e19965f9-66d1-4f66-b3dd-a2d4d2006af1.mock.pstmn.io/produktypoNipie';
+  private BASE_CLIENTS = 'https://dd817dab-0c7c-4dda-87f5-3ca9912b95eb.mock.pstmn.io/api/contractor/123213';
   private ORDERS = '/orders';
   private STATUS = '/status';
   private CUSTOMERS = '/customers';
@@ -48,12 +49,17 @@ export class ApiService {
   }
 
   getCustomerByNIP(nip: string): Observable<ICustomer> {
-    return this.http.get( this.BASE + this.CUSTOMERS + `/${nip}`) as Observable<ICustomer>;
+    return this.http.get( this.BASE + `/customers/${nip}`) as Observable<ICustomer>;
   }
 
-  getProductsFromAPI(): Observable<IProduct[]> {
-    return new Observable<IProduct[]>();
-    // return this.http.get(this.BASE_PRODUCTS) as Observable<IProduct[]>;
+  getCustomerByNipFromContractors(nip: string): Observable<any> {
+    return this.http.get( this.BASE_CLIENTS + `/${nip}`) as Observable<any>;
+  }
+
+  getProductsFromAPI(nip: string): Observable<any> {
+    // return new Observable<IProduct[]>();
+    const data = this.http.get(this.BASE_PRODUCTS + `/${nip}`);
+    return data as any;
   }
 
   getProductByID(objectID: number): Observable<IProduct> {

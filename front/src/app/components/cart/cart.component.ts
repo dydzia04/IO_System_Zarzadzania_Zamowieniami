@@ -1,3 +1,4 @@
+import { CustomerDetailsComponent } from './../customer-details/customer-details.component';
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {faArrowLeft} from '@fortawesome/free-solid-svg-icons';
 import {faCheckCircle} from '@fortawesome/free-solid-svg-icons';
@@ -12,6 +13,7 @@ import {SelectCustomerComponent} from '../select-customer/select-customer.compon
 import {ApiService} from '../../services/api.service';
 import IPostCustomer from '../../interface/IPostCustomer';
 import IPostCart from '../../interface/IPostCart';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-cart',
@@ -35,6 +37,7 @@ export class CartComponent implements OnInit, OnDestroy {
     public cartService: CartService,
     private dialog: MatDialog,
     private api: ApiService,
+    private router: Router,
   ) {
     this.creationDate = new Date( Date.now() ).toISOString().split('T')[0];
 
@@ -42,7 +45,7 @@ export class CartComponent implements OnInit, OnDestroy {
 
     this.cartService.cart.forEach( product => {
       this.fullNettoPrice += product.pivot.netPrice;
-      this.fullBruttoPrice += product.pivot.netPrice * product.pivot.quantity;
+      this.fullBruttoPrice += product.pivot.netPrice * product.vatRate * product.pivot.quantity;
     });
   }
 
@@ -92,7 +95,25 @@ export class CartComponent implements OnInit, OnDestroy {
       };
       postProductsArr.push(toPost);
     });
+    this.api.createOrder(postCustomer, postProductsArr).toPromise().then((data) => {
+      console.log(data);
+      this.cartService.clearCustomer();
+      this.router.navigateByUrl('/edit/' + data.id);
+    });
 
-    this.api.createOrder(postCustomer, postProductsArr).subscribe();
+
+  }
+  customerInfo(): void{
+    const isIndb = false;
+    if (isIndb)
+    {
+      this.router.navigateByUrl('/customer-details/' + this.cartService.customer.NIP);
+    }else if ( this.cartService.customer.NIP !== '')
+    {
+      alert('dane klienta:\nname: ' + this.cartService.customer.name + '\nNIP: '+this.cartService.customer.NIP+'\nAdress: '+this.cartService.customer.address+'\nContact name: '+this.cartService.customer.contact_name);
+    }else
+    {
+      alert('brak danych klienta');
+    }
   }
 }

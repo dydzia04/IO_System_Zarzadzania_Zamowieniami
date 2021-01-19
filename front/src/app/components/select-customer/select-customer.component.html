@@ -1,5 +1,5 @@
 <div class="wrapper__select-customer">
-  <input [(ngModel)]="searchString">
+  <input [(ngModel)]="searchString" (keyup.enter)="onEnter()">
   <hr/>
   <div *ngFor="let customer of customers | customerSelectFilter: searchString;" (click)="selectCustomer(customer)" class="select-customer__list">
     <p>

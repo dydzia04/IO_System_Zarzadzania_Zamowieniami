@@ -22,6 +22,8 @@ class CustomerController extends Controller
     {
         try {
             $customer = Customer::firstWhere('nip', $nip);
+            if ($customer === null)
+                return response()->json(["info" => "Nie znaleziono kontrahenta po nipie."], 422);
             $customer = $customer->load(['orders']);
             return response()->json($customer, 200);
         } catch (Exception $e) {

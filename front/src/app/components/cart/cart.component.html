@@ -15,7 +15,7 @@
       <button (click)="selectCustomer()" class="customer">
         Wybierz kontrahenta
       </button>
-      <button routerLink="/customer-details" class="customer">
+      <button (click)="customerInfo()" class="customer">
         Szczegóły kontrahenta
       </button>
 
@@ -71,10 +71,10 @@
 <!--        <input type="date" id="date" name="date" [(ngModel)]="creationDate" class="input_style">-->
 <!--      </p>-->
       <p class="contrete-date">
-        Całkowita cena netto:
+        Całkowita cena netto: {{fullNettoPrice.toFixed(2)}}
       </p>
       <p class="contrete-date">
-        Całkowita cena brutto:
+        Całkowita cena brutto: {{fullBruttoPrice.toFixed(2)}}
       </p>
 
       <button routerLink="/product-list/" class="back">

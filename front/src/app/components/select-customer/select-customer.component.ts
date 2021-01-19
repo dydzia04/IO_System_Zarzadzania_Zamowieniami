@@ -32,4 +32,32 @@ export class SelectCustomerComponent implements OnInit {
     this.cart.customer = customer;
     this.matDialogRef.close();
   }
+
+  onEnter(): void {
+    this.api.getCustomerByNipFromContractors(this.searchString).subscribe( data => {
+      this.cart.customer.NIP = data.nip;
+      this.cart.customer.address = data.departaments[0].street + ' '
+        + data.departaments[0].city + ' '
+        + data.departaments[0].postal_code + ' '
+        + data.departaments[0].country;
+      this.cart.customer.email = data.departaments[0].contacts[0].email;
+      this.cart.customer.contact_surname = data.departaments[0].contacts[0].last_name;
+      this.cart.customer.contact_name = data.departaments[0].contacts[0].name;
+      this.cart.customer.phone = data.departaments[0].contacts[0].phone;
+      this.cart.customer.name = data.name;
+      console.log(data.nip);
+
+      this.cart.cart.clear();
+
+      this.matDialogRef.close();
+
+      // console.log(data.departaments[0].contacts[0].email);
+      // console.log(
+      //   data.departaments[0].street + ' '
+      //   + data.departaments[0].city + ' '
+      //   + data.departaments[0].postal_code + ' '
+      //   + data.departaments[0].country);
+      // console.log(data);
+    });
+  }
 }

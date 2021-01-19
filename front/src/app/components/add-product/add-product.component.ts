@@ -19,7 +19,8 @@ export class AddProductComponent implements OnInit {
     this.productList = [];
     this.searchString = '';
 
-    this.api.getProductsFromAPI().subscribe( products => {
+    // dodalem nip tutaj ale chyba powinno byc cos inaczej
+    this.api.getProductsFromAPI(this.cartService.customer.NIP).subscribe( products => {
       this.productList = products;
     });
   }

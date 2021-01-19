@@ -26,6 +26,20 @@ export class CartService {
     };
   }
 
+  clearCustomer():void {
+    this.customer.NIP='';
+    this.customer.address='';
+    this.customer.contact_name='';
+    this.customer.contact_surname='';
+    this.customer.created_at='';
+    this.customer.email='';
+    this.customer.id=0;
+    this.customer.name='';
+    this.customer.orders=[];
+    this.customer.phone='';
+    this.customer.updated_at='';
+  }
+
   addToCart(productToAdd: IProduct): void {
     if (this.cart.has(productToAdd)) {
       this.cart.forEach( product => {

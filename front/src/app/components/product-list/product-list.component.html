@@ -31,19 +31,19 @@
       {{i+1}}
     </p>
     <p>
-      {{product.name}}
+      {{product.nazwa_produktu}}
     </p>
     <p>
-      {{product.pivot.netPrice}}
+      {{product.cena_netto}}
     </p>
     <p>
-      {{product.vatRate}}
+      {{product.stawka_VAT}}
     </p>
     <p>
-      {{product.measureUnit}}
+      {{product.jednostka_miary}}
     </p>
     <p>
-      <fa-icon (click)="addObjectToCart(product.id)" routerLink="/cart" [icon]="faShoppingCart" class="Product_List_Icon"></fa-icon>
+      <fa-icon (click)="addObjectToCart(product)" [icon]="faShoppingCart" class="Product_List_Icon"></fa-icon>
     </p>
     <p [routerLink]="['/product-details', product.id]" class="details">
       Szczegóły
