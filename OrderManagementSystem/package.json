@@ -1,8 +1,7 @@
 {
     "private": true,
     "scripts": {
-        "clearLaravel": "composer dump-autoload && php artisan cache:clear",
-        "clearDBandSeed": "php artisan migrate:fresh --seed",
+        "clearDBandSeed": "composer dump-autoload && php artisan cache:clear && php artisan config:clear && php artisan config:cache && php artisan migrate:fresh --seed",
         "runApp": "php artisan serve"
     },
     "devDependencies": {
