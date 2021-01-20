@@ -31,7 +31,9 @@ class OrderController extends Controller
     public function getOrderById($id)
     {
         try {
-            $order = Order::findOrFail($id);
+            $order = Order::find($id);
+            if ($order === null)
+                return response()->json(['info' => "Order with " . $id . " does not exist in database."], 422);
             $order = $order->load(['customer:id,NIP,name', 'status', 'products']);
             return response()->json($order, 200);
         } catch (Exception $e) {
@@ -71,6 +73,8 @@ class OrderController extends Controller
 
             if ($date === null)
                 $date = Carbon::now();
+            else
+                $date = Carbon::parse($date);
 
             // Creating new Order
             $order = new Order();
@@ -132,11 +136,11 @@ class OrderController extends Controller
     public function deleteOrder($id)
     {
         try {
-            $order = Order::findOrFail($id);
+            $order = Order::find($id);
+            if ($order === null)
+                return response()->json(['info' => "Order with " . $id . " does not exist in database."], 422);
             $order->delete();
             return response()->json(['deleted' => $order], 200);
-        } catch (PDOException $e) {
-            return response()->json(['errors' => ['title' => "Database problem", 'detail' => $e->getMessage()]], 500);
         } catch (Exception $e) {
             return response()->json(['error' =>  $e->getMessage()], 500);
         }
@@ -146,7 +150,7 @@ class OrderController extends Controller
     {
         try {
             DB::beginTransaction();
-            $order = Order::findOrFail($id);
+            $order = Order::find($id);
             if ($order === null)
                 return response()->json(['errors' => ['title' => 'Invalid order id', 'detail' => 'Order identified by id: "' . $id . '" doesn\'t exist in database.']], 422);
 
@@ -157,7 +161,7 @@ class OrderController extends Controller
                     'products.*.product_id' => 'required|integer',
                     'products.*.quantity' => 'required|numeric|min:1',
                     'products.*.netPrice' => 'required|numeric|min:0',
-                    'status_id' => 'exists:order_status,id'
+                    'status_id' => 'required|exists:order_status,id'
                 ]
             );
 
@@ -193,6 +197,9 @@ class OrderController extends Controller
             $order->save();
             DB::commit();
             return response()->json(['updated' => $order->load(['customer', 'products'])], 200);
+        } catch (ValidationException $e) {
+            DB::rollback();
+            return response()->json(['errors' => ['title' => $e->getMessage(), 'detail' => $e->errors()]], 422);
         } catch (PDOException $e) {
             DB::rollback();
             return response()->json(['errors' => ['title' => "Database problem", 'detail' => $e->getMessage()]], 500);

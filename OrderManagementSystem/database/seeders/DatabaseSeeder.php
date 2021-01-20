@@ -15,7 +15,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-         $statuses = [
+        $statuses = [
             ['id' => 1, 'name' => 'Zamówiono'],
             ['id' => 2, 'name' => 'W realizacji'],
             ['id' => 3, 'name' => 'Ukończono'],
